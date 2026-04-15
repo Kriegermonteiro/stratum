@@ -5,242 +5,809 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Camadas de Excelência Digital — Sites que Convertem para Todo o Brasil</title>
   <meta name="description" content="Sites profissionais, rápidos e altamente conversores para qualquer negócio em qualquer lugar do Brasil. Pacotes a partir de R$ 580 com garantia total.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --primary: #1e40af;      /* Azul profundo premium */
-      --primary-light: #dbeafe;
-      --accent: #15803d;       /* Verde esmeralda refinado */
-      --accent-light: #dcfce7;
-      --amber: #ca8a04;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-tertiary: #64748b;
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8fafc;
-      --border: rgba(15, 23, 42, 0.12);
-      --border-strong: rgba(15, 23, 42, 0.25);
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
+      --ink:    #0e1117;
+      --ink-2:  #3a3f4b;
+      --ink-3:  #7a8090;
+      --paper:  #f7f4ef;
+      --paper-2:#edeae3;
+      --white:  #ffffff;
+      --moss:   #1a5c43;
+      --moss-l: #e8f5ef;
+      --amber:  #c96f1a;
+      --amber-l:#fdf0e2;
+      --sky:    #1b4f89;
+      --sky-l:  #e6eef8;
+      --border: rgba(14,17,23,0.10);
+      --border-s: rgba(14,17,23,0.22);
+      --r-md:   10px;
+      --r-lg:   16px;
+      --r-xl:   22px;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
       line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NOISE TEXTURE OVERLAY ─────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
     }
 
     /* ─── UTILITÁRIOS ─────────────────────────────── */
-    .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
-    section { padding: 80px 0; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 96px 0; }
     hr.divider { border: none; border-top: 1px solid var(--border); }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--ink-2);
+      font-weight: 300;
+    }
 
     .badge {
       display: inline-block;
-      padding: 6px 14px;
-      border-radius: var(--radius-md);
-      font-size: 13px;
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.02em;
     }
-    .badge-success { background: var(--accent-light); color: var(--accent); }
-    .badge-info    { background: var(--primary-light); color: var(--primary); }
-    .badge-warning { background: #fef3c7; color: var(--amber); }
-    .badge-neutral { background: var(--bg-secondary); color: var(--text-secondary); }
+    .badge-success { background: var(--moss-l); color: var(--moss); }
+    .badge-info    { background: var(--sky-l);  color: var(--sky); }
+    .badge-warning { background: var(--amber-l); color: var(--amber); }
+    .badge-neutral { background: var(--paper-2); color: var(--ink-2); }
 
+    /* ─── BUTTONS ─────────────────────────────────── */
     .btn-primary {
-      display: inline-block;
-      background: linear-gradient(90deg, var(--accent), #166534);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--moss);
       color: white;
-      padding: 16px 32px;
-      border-radius: var(--radius-lg);
-      font-size: 16px;
+      padding: 16px 30px;
+      border-radius: var(--r-lg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
       font-weight: 600;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25);
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.18), 0 6px 20px rgba(26,92,67,0.22);
+      letter-spacing: 0.01em;
     }
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(21, 128, 61, 0.35);
+      background: #145235;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 0 rgba(0,0,0,0.18), 0 12px 28px rgba(26,92,67,0.28);
     }
+    .btn-primary:active { transform: translateY(0); }
 
     .btn-ghost {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       padding: 15px 28px;
-      border-radius: var(--radius-lg);
+      border-radius: var(--r-lg);
+      font-family: 'DM Sans', sans-serif;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 500;
       text-decoration: none;
-      border: 1.5px solid var(--border-strong);
-      color: var(--text-primary);
+      border: 1.5px solid var(--border-s);
+      color: var(--ink);
       background: transparent;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: border-color 0.2s, background 0.2s;
     }
     .btn-ghost:hover {
-      background: var(--bg-secondary);
-      border-color: var(--accent);
+      background: var(--white);
+      border-color: var(--moss);
+      color: var(--moss);
     }
 
+    /* ─── CARDS ───────────────────────────────────── */
     .card {
-      background: var(--bg-primary);
+      background: var(--white);
       border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
+      border-radius: var(--r-xl);
       padding: 28px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
     }
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(14,17,23,0.08);
     }
     .card-featured {
-      border: 3px solid var(--accent);
-      box-shadow: 0 20px 25px -5px rgba(21, 128, 61, 0.15);
+      border: 2px solid var(--moss);
+      box-shadow: 0 8px 32px rgba(26,92,67,0.12);
+      background: var(--ink);
+      color: var(--white);
       position: relative;
     }
-
-    .check { color: var(--accent); margin-right: 10px; font-weight: bold; }
-
-    /* ─── URGÊNCIA ────────────────────────────────── */
-    .urgency-bar {
-      background: linear-gradient(90deg, var(--accent), #166534);
-      color: white;
-      text-align: center;
-      padding: 12px 16px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.4px;
+    .card-featured:hover {
+      box-shadow: 0 20px 48px rgba(26,92,67,0.22);
     }
+
+    .check { color: var(--moss); margin-right: 10px; font-weight: 700; }
+    .card-featured .check { color: #6ee7b7; }
+
+    /* ─── URGENCY BAR ─────────────────────────────── */
+    .urgency-bar {
+      background: var(--ink);
+      color: rgba(255,255,255,0.88);
+      text-align: center;
+      padding: 11px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      position: relative;
+      overflow: hidden;
+    }
+    .urgency-bar::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--amber);
+    }
+    .urgency-bar strong { color: var(--amber); }
 
     /* ─── HERO ────────────────────────────────────── */
     .hero {
-      text-align: center;
-      padding: 100px 0 90px;
-      background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+      padding: 0;
+      background: var(--ink);
       color: white;
       position: relative;
       overflow: hidden;
     }
-    .hero h1 {
-      font-size: clamp(28px, 5.5vw, 52px);
-      font-weight: 700;
-      line-height: 1.15;
-      margin: 24px 0 16px;
-      letter-spacing: -0.02em;
+
+    /* Geometric background pattern */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(26,92,67,0.35) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(27,79,137,0.2) 0%, transparent 45%),
+        radial-gradient(circle at 65% 80%, rgba(201,111,26,0.1) 0%, transparent 40%);
+      pointer-events: none;
     }
+
+    /* Grid lines overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 580px;
+      align-items: center;
+    }
+
+    .hero-content {
+      padding: 96px 0 96px 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.9);
+      padding: 6px 14px 6px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .hero-badge-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber);
+      position: relative;
+    }
+
     .hero .sub {
-      font-size: 20px;
-      max-width: 620px;
-      margin: 0 auto 16px;
-      opacity: 0.95;
+      font-size: 17px;
+      max-width: 480px;
+      margin-bottom: 14px;
+      color: rgba(255,255,255,0.78);
+      font-weight: 300;
+      line-height: 1.7;
     }
     .hero .tagline {
-      font-size: 17px;
-      max-width: 580px;
-      margin: 0 auto 32px;
-      opacity: 0.9;
+      font-size: 15px;
+      max-width: 460px;
+      margin-bottom: 36px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
     }
+    .hero .tagline strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
     .hero-ctas {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
+      gap: 12px;
       margin-bottom: 20px;
     }
-    .hero .fine-print {
-      font-size: 13.5px;
-      opacity: 0.75;
+
+    .hero .btn-ghost {
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+    }
+    .hero .btn-ghost:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.4);
+      color: white;
     }
 
-    /* ─── NÚMEROS ─────────────────────────────────── */
+    .hero .fine-print {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+    }
+
+    /* Hero mockup panel */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 60px 0 60px 40px;
+    }
+
+    .browser-mockup {
+      width: 100%;
+      max-width: 380px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      overflow: hidden;
+      transform: perspective(800px) rotateY(-6deg) rotateX(3deg);
+      box-shadow:
+        0 40px 80px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .browser-bar {
+      background: rgba(255,255,255,0.08);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .browser-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .bd-r { background: #ff5f56; }
+    .bd-y { background: #ffbd2e; }
+    .bd-g { background: #27c93f; }
+
+    .browser-url {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 5px;
+      height: 18px;
+      margin-left: 8px;
+    }
+
+    .browser-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mock-hero-block {
+      background: linear-gradient(135deg, rgba(26,92,67,0.6), rgba(27,79,137,0.4));
+      border-radius: 8px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .mock-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.25); }
+    .mock-line.w80 { width: 80%; }
+    .mock-line.w60 { width: 60%; }
+    .mock-line.w40 { width: 40%; }
+    .mock-btn {
+      height: 24px; width: 44%;
+      border-radius: 5px;
+      background: rgba(26,92,67,0.7);
+    }
+
+    .mock-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    .mock-card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 7px;
+      height: 60px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .mock-card.highlighted {
+      background: rgba(26,92,67,0.35);
+      border: 1px solid rgba(26,92,67,0.5);
+    }
+    .mock-dot { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+    .mock-card.highlighted .mock-dot { background: rgba(110,231,183,0.4); }
+
+    .mock-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .mock-stat {
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 8px;
+    }
+    .mock-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: #6ee7b7;
+    }
+    .mock-stat-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .mock-stat-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background: rgba(110,231,183,0.5);
+      border-radius: 2px;
+    }
+
+    /* ─── NUMBERS ─────────────────────────────────── */
+    .numbers-section {
+      padding: 48px 0;
+      background: var(--white);
+    }
+
     .numbers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
-    }
-    .number-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 20px 12px;
-      text-align: center;
-      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
-    }
-    .number-card .num { 
-      font-size: 32px; 
-      font-weight: 700; 
-      color: var(--accent);
-    }
-    .number-card .lbl { 
-      font-size: 14px; 
-      color: var(--text-secondary); 
-      margin-top: 6px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
     }
 
-    /* ─── PACOTES ─────────────────────────────────── */
+    .number-card {
+      padding: 28px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .number-card:last-child { border-right: none; }
+
+    .number-card .num {
+      font-family: 'Syne', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--moss);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .number-card .lbl {
+      font-size: 13px;
+      color: var(--ink-3);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    /* ─── PACKAGES ────────────────────────────────── */
+    .packages-section {
+      background: var(--paper);
+    }
+
+    .packages-intro { margin-bottom: 52px; }
+
     .packages-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
       align-items: start;
     }
+
+    /* Middle card elevated */
+    .packages-grid > *:nth-child(2) {
+      transform: translateY(-14px);
+    }
+
     .package-card { position: relative; }
+
     .package-badge-top {
       position: absolute;
       top: -14px;
       left: 50%;
       transform: translateX(-50%);
+      white-space: nowrap;
       z-index: 10;
     }
-    .package-price { 
-      font-size: 34px; 
-      font-weight: 700; 
-      margin: 12px 0 6px; 
-      color: var(--text-primary);
+    .card-featured .package-badge-top .badge {
+      background: var(--moss);
+      color: white;
     }
-    .package-price-sub { 
-      font-size: 14.5px; 
-      color: var(--text-secondary);
+
+    .package-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin: 16px 0 4px;
+      line-height: 1;
     }
+    .card-featured .package-price { color: white; }
+
+    .package-price-sub {
+      font-size: 13px;
+      color: var(--ink-3);
+      margin-bottom: 4px;
+    }
+    .card-featured .package-price-sub { color: rgba(255,255,255,0.5); }
+    .card-featured .package-price-sub del { color: rgba(255,255,255,0.3); }
 
     .feature-list {
       list-style: none;
-      font-size: 15px;
+      font-size: 14px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin: 24px 0;
+      gap: 11px;
+      margin: 22px 0;
+      color: var(--ink-2);
+    }
+    .card-featured .feature-list { color: rgba(255,255,255,0.75); }
+
+    .badge-neutral-dark {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.14);
     }
 
     .guarantee-box {
-      margin-top: 40px;
-      background: var(--bg-secondary);
-      border-radius: var(--radius-xl);
-      padding: 28px;
+      margin-top: 44px;
+      background: var(--white);
+      border-radius: var(--r-xl);
+      padding: 28px 32px;
       text-align: center;
-      border: 1px solid var(--accent-light);
-    }
-
-    /* ─── CASES E OUTRAS SEÇÕES ───────────────────── */
-    .cases-grid, .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
       gap: 20px;
     }
-    .card {
-      border-radius: var(--radius-xl);
+
+    .guarantee-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--moss-l);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 22px;
     }
 
-    /* ─── RESPONSIVO ──────────────────────────────── */
+    /* ─── CASES ───────────────────────────────────── */
+    .cases-section { background: var(--white); }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .case-card { border-left: 3px solid transparent; }
+    .case-card:nth-child(1) { border-left-color: var(--moss); }
+    .case-card:nth-child(2) { border-left-color: var(--amber); }
+    .case-card:nth-child(3) { border-left-color: var(--sky); }
+
+    .case-result {
+      font-family: 'Syne', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 10px 0 4px;
+    }
+    .case-card:nth-child(1) .case-result { color: var(--moss); }
+    .case-card:nth-child(2) .case-result { color: var(--amber); }
+    .case-card:nth-child(3) .case-result { color: var(--sky); }
+
+    .case-name { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+    .case-niche { font-size: 12px; color: var(--ink-3); margin-bottom: 14px; }
+
+    .case-before-after {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+    .case-before { color: var(--ink-3); }
+    .case-after  { color: var(--ink-2); font-weight: 500; }
+
+    /* ─── TESTIMONIALS ────────────────────────────── */
+    .testimonials-section { background: var(--paper); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .testimonial-card { position: relative; overflow: hidden; }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      font-family: 'Syne', sans-serif;
+      font-size: 100px;
+      font-weight: 800;
+      color: var(--paper-2);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .testimonial-stars { color: #f59e0b; font-size: 14px; margin-bottom: 12px; letter-spacing: 1px; }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--ink-2);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .testimonial-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .t-av-1 { background: var(--moss-l); color: var(--moss); }
+    .t-av-2 { background: var(--amber-l); color: var(--amber); }
+    .t-av-3 { background: var(--sky-l); color: var(--sky); }
+
+    .testimonial-byline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--ink-3);
+    }
+
+    /* ─── FAQ ─────────────────────────────────────── */
+    .faq-section { background: var(--white); }
+
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
+
+    .faq-item {
+      cursor: pointer;
+      padding: 22px 26px;
+    }
+    .faq-item h3 {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--ink-3);
+      font-weight: 300;
+      flex-shrink: 0;
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── CTA FINAL ───────────────────────────────── */
+    .cta-final {
+      background: var(--ink);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 30% 70%, rgba(26,92,67,0.4) 0%, transparent 55%),
+        radial-gradient(circle at 75% 25%, rgba(27,79,137,0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .cta-final::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .cta-final .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-final h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4.5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .cta-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+      max-width: 520px;
+      margin: 0 auto 12px;
+      font-weight: 300;
+    }
+    .cta-fine {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 36px;
+    }
+    .cta-proof {
+      margin-top: 24px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ─── FADE IN ANIMATIONS ──────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .fade-up-1 { animation-delay: 0.05s; }
+    .fade-up-2 { animation-delay: 0.15s; }
+    .fade-up-3 { animation-delay: 0.25s; }
+    .fade-up-4 { animation-delay: 0.35s; }
+    .fade-up-5 { animation-delay: 0.45s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 64px 0; }
+
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero-content { padding: 72px 0; }
+
+      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+      .number-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .number-card:last-child { border-bottom: none; }
+
+      .packages-grid,
+      .cases-grid,
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .packages-grid > *:nth-child(2) { transform: none; }
+
+      .guarantee-box { flex-direction: column; text-align: center; }
+    }
+
     @media (max-width: 480px) {
-      section { padding: 60px 0; }
-      .hero { padding: 80px 0 70px; }
-      .hero h1 { font-size: 32px; }
+      .hero h1 { font-size: 30px; }
+      .number-card .num { font-size: 36px; }
     }
   </style>
 </head>
@@ -248,52 +815,114 @@
 
   <!-- BARRA DE URGÊNCIA -->
   <div class="urgency-bar">
-    Preço atual válido por tempo limitado — Vagas abertas para novos projetos este mês
+    <strong>Vagas abertas</strong> para novos projetos este mês — Preço atual válido por tempo limitado
   </div>
 
   <!-- ══ HERO ══════════════════════════════════════════ -->
   <section class="hero">
     <div class="container">
-      <span class="badge badge-success">Funciona para qualquer negócio, em qualquer lugar do Brasil</span>
-      <h1>
-        Seu site atual está<br>custando clientes todo dia.
-      </h1>
-      <p class="sub">
-        Construa as <strong style="color:#fff;font-weight:700">Camadas de Excelência Digital</strong> que transformam visitantes em clientes pagantes — para qualquer negócio, em qualquer lugar do Brasil.
-      </p>
-      <p class="tagline">
-        Sites profissionais, rápidos e altamente conversores. Pacotes a partir de <strong style="color:#fff;font-weight:700">R$ 580</strong>. <strong>Resultados reais ou refazemos grátis.</strong>
-      </p>
-      <div class="hero-ctas">
-        <a href="https://wa.me/5551992771747?text=Quero+meu+diagnóstico+gratuito+de+conversão" class="btn-primary">
-          Quero meu diagnóstico gratuito agora →
-        </a>
-        <a href="#pacotes" class="btn-ghost">Ver pacotes e preços</a>
+      <div class="hero-inner">
+
+        <div class="hero-content">
+          <div class="hero-badge fade-up fade-up-1">
+            <span class="hero-badge-dot"></span>
+            Funciona para qualquer negócio, em qualquer lugar do Brasil
+          </div>
+          <h1 class="fade-up fade-up-2">
+            Seu site atual está<br>custando <em>clientes</em><br>todo dia.
+          </h1>
+          <p class="sub fade-up fade-up-3">
+            Construa as <strong style="color:#fff;font-weight:600">Camadas de Excelência Digital</strong> que transformam visitantes em clientes pagantes — para qualquer negócio, em qualquer lugar do Brasil.
+          </p>
+          <p class="tagline fade-up fade-up-4">
+            Sites profissionais, rápidos e altamente conversores. Pacotes a partir de <strong>R$ 580</strong>. <strong>Resultados reais ou refazemos grátis.</strong>
+          </p>
+          <div class="hero-ctas fade-up fade-up-5">
+            <a href="https://wa.me/5551992771747?text=Quero+meu+diagnóstico+gratuito+de+conversão" class="btn-primary">
+              Quero meu diagnóstico gratuito agora →
+            </a>
+            <a href="#pacotes" class="btn-ghost">Ver pacotes e preços</a>
+          </div>
+          <p class="fine-print fade-up fade-up-5">Sem compromisso · Resposta em até 1h no WhatsApp</p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <div class="browser-dot bd-r"></div>
+              <div class="browser-dot bd-y"></div>
+              <div class="browser-dot bd-g"></div>
+              <div class="browser-url"></div>
+            </div>
+            <div class="browser-body">
+              <div class="mock-hero-block">
+                <div class="mock-line w80"></div>
+                <div class="mock-line w60"></div>
+                <div class="mock-btn"></div>
+              </div>
+              <div class="mock-cards-row">
+                <div class="mock-card">
+                  <div class="mock-dot"></div>
+                  <div class="mock-line w80"></div>
+                  <div class="mock-line w60"></div>
+                </div>
+                <div class="mock-card highlighted">
+                  <div class="mock-dot"></div>
+                  <div class="mock-line w80"></div>
+                  <div class="mock-line w60"></div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-dot"></div>
+                  <div class="mock-line w80"></div>
+                  <div class="mock-line w60"></div>
+                </div>
+              </div>
+              <div class="mock-stats">
+                <div class="mock-stat">
+                  <span class="mock-stat-num">+180%</span>
+                  <div class="mock-stat-bar"><div class="mock-stat-fill" style="width:80%"></div></div>
+                </div>
+                <div class="mock-stat">
+                  <span class="mock-stat-num">100%</span>
+                  <div class="mock-stat-bar"><div class="mock-stat-fill" style="width:100%"></div></div>
+                </div>
+                <div class="mock-stat">
+                  <span class="mock-stat-num">78%</span>
+                  <div class="mock-stat-bar"><div class="mock-stat-fill" style="width:78%"></div></div>
+                </div>
+                <div class="mock-stat">
+                  <span class="mock-stat-num">24h</span>
+                  <div class="mock-stat-bar"><div class="mock-stat-fill" style="width:50%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <p class="fine-print">Sem compromisso · Resposta em até 1h no WhatsApp</p>
     </div>
   </section>
 
   <hr class="divider">
 
   <!-- ══ NÚMEROS DE PROVA ═══════════════════════════════ -->
-  <section style="padding: 40px 0;">
+  <section class="numbers-section" style="padding: 0;">
     <div class="container">
       <div class="numbers-grid">
         <div class="number-card">
-          <p class="num">+180%</p>
+          <span class="num">+180%</span>
           <p class="lbl">Média de aumento em leads</p>
         </div>
         <div class="number-card">
-          <p class="num">78%</p>
+          <span class="num">78%</span>
           <p class="lbl">Escolhem o pacote Crescimento</p>
         </div>
         <div class="number-card">
-          <p class="num">24h</p>
+          <span class="num">24h</span>
           <p class="lbl">Para seu diagnóstico gratuito</p>
         </div>
         <div class="number-card">
-          <p class="num">100%</p>
+          <span class="num">100%</span>
           <p class="lbl">Satisfação ou refazemos grátis</p>
         </div>
       </div>
@@ -303,12 +932,12 @@
   <hr class="divider">
 
   <!-- ══ PACOTES ═══════════════════════════════════════ -->
-  <section id="pacotes">
+  <section id="pacotes" class="packages-section">
     <div class="container">
       <div class="packages-intro">
-        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px">Escolha sua camada</p>
-        <h2>Pacotes que geram resultado real</h2>
-        <p>Para qualquer nicho · Qualquer cidade · Qualquer estado</p>
+        <span class="eyebrow">Escolha sua camada</span>
+        <h2 class="section-title">Pacotes que geram resultado real</h2>
+        <p class="section-sub">Para qualquer nicho · Qualquer cidade · Qualquer estado</p>
       </div>
 
       <div class="packages-grid">
@@ -325,7 +954,7 @@
             <li><span class="check">✓</span>Até 5 páginas otimizadas</li>
             <li><span class="check">✓</span>Entrega em até 7 dias</li>
           </ul>
-          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Fundação" class="btn-ghost" style="width:100%;text-align:center;display:block">
+          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Fundação" class="btn-ghost" style="width:100%;text-align:center;display:flex;justify-content:center">
             Começar com Fundação
           </a>
         </div>
@@ -333,9 +962,9 @@
         <!-- CRESCIMENTO (DESTAQUE) -->
         <div class="card card-featured package-card">
           <div class="package-badge-top">
-            <span class="badge badge-success">MAIS VENDIDO · Escolhido por 78% dos clientes</span>
+            <span class="badge" style="background:var(--moss);color:white;font-size:11px">MAIS VENDIDO · 78% dos clientes</span>
           </div>
-          <span class="badge badge-success">Camada Crescimento</span>
+          <span class="badge badge-neutral-dark">Camada Crescimento</span>
           <p class="package-price">R$ 1.497</p>
           <p class="package-price-sub">à vista · <del>R$ 1.897</del></p>
           <ul class="feature-list">
@@ -345,7 +974,7 @@
             <li><span class="check">✓</span>Velocidade otimizada: reduz abandono em até 65%</li>
             <li><span class="check">✓</span>1 mês de suporte incluído</li>
           </ul>
-          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Crescimento" class="btn-primary" style="width:100%;text-align:center;display:block">
+          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Crescimento" class="btn-primary" style="width:100%;justify-content:center">
             Quero o pacote Crescimento →
           </a>
         </div>
@@ -362,7 +991,7 @@
             <li><span class="check">✓</span>Captação de leads de qualquer estado do Brasil</li>
             <li><span class="check">✓</span>3 meses de suporte prioritário + ajustes ilimitados</li>
           </ul>
-          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Domínio+Total" class="btn-ghost" style="width:100%;text-align:center;display:block">
+          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Domínio+Total" class="btn-ghost" style="width:100%;text-align:center;display:flex;justify-content:center">
             Quero o Domínio Total
           </a>
         </div>
@@ -371,8 +1000,11 @@
 
       <!-- GARANTIA -->
       <div class="guarantee-box">
-        <p style="font-size:18px;font-weight:600;margin-bottom:8px;color:var(--accent);">Garantia total de satisfação</p>
-        <p>Se o resultado não te surpreender, <strong style="color:var(--accent)">refazemos gratuitamente</strong>. Sem burocracia, sem letra pequena.</p>
+        <div class="guarantee-icon">✦</div>
+        <div style="text-align:left">
+          <p style="font-size:16px;font-weight:600;margin-bottom:4px;color:var(--moss);">Garantia total de satisfação</p>
+          <p style="font-size:14px;color:var(--ink-2);font-weight:300">Se o resultado não te surpreender, <strong style="color:var(--moss);font-weight:600">refazemos gratuitamente</strong>. Sem burocracia, sem letra pequena.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -380,37 +1012,47 @@
   <hr class="divider">
 
   <!-- ══ CASES ════════════════════════════════════════ -->
-  <section>
+  <section class="cases-section">
     <div class="container">
-      <div class="cases-intro">
-        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px">Resultados reais</p>
-        <h2>Empresas de todo o Brasil já transformaram seus resultados</h2>
-        <p>Site invisível → máquina de vendas 24h</p>
-      </div>
+      <span class="eyebrow">Resultados reais</span>
+      <h2 class="section-title">Empresas de todo o Brasil<br>já transformaram seus resultados</h2>
+      <p class="section-sub">Site invisível → máquina de vendas 24h</p>
 
       <div class="cases-grid">
         <div class="card case-card">
-          <span class="badge badge-success" style="margin-bottom:12px">+180% agendamentos</span>
-          <p style="font-weight:500;margin-bottom:4px">Clínica Odontológica Smile</p>
-          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Clínica odontológica · Qualquer cidade</p>
-          <p class="before"><strong>Antes:</strong> site antigo, sem agendamento online, perdendo pacientes para concorrentes.</p>
-          <p class="after"><strong>Depois:</strong> +180% de agendamentos em 30 dias, agenda cheia sem esforço de vendas.</p>
+          <span class="badge badge-success">Clínica odontológica</span>
+          <p class="case-result">+180%</p>
+          <p style="font-size:13px;color:var(--ink-3);margin-bottom:6px">agendamentos em 30 dias</p>
+          <p class="case-name">Clínica Odontológica Smile</p>
+          <p class="case-niche">Qualquer cidade</p>
+          <div class="case-before-after">
+            <p class="case-before"><strong>Antes:</strong> site antigo, sem agendamento online, perdendo pacientes para concorrentes.</p>
+            <p class="case-after"><strong>Depois:</strong> +180% de agendamentos em 30 dias, agenda cheia sem esforço de vendas.</p>
+          </div>
         </div>
 
         <div class="card case-card">
-          <span class="badge badge-warning" style="margin-bottom:12px">Vendas nacionais com Pix</span>
-          <p style="font-weight:500;margin-bottom:4px">Loja de Roupas Moda Viva</p>
-          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">E-commerce de moda · Vende para todo o Brasil</p>
-          <p class="before"><strong>Antes:</strong> só vendia localmente, sem presença digital, sem loja virtual.</p>
-          <p class="after"><strong>Depois:</strong> e-commerce que vende 24h para clientes de múltiplos estados via Pix.</p>
+          <span class="badge badge-warning">E-commerce de moda</span>
+          <p class="case-result">Nacional</p>
+          <p style="font-size:13px;color:var(--ink-3);margin-bottom:6px">vendas com Pix para todo o Brasil</p>
+          <p class="case-name">Loja de Roupas Moda Viva</p>
+          <p class="case-niche">Vende para todo o Brasil</p>
+          <div class="case-before-after">
+            <p class="case-before"><strong>Antes:</strong> só vendia localmente, sem presença digital, sem loja virtual.</p>
+            <p class="case-after"><strong>Depois:</strong> e-commerce que vende 24h para clientes de múltiplos estados via Pix.</p>
+          </div>
         </div>
 
         <div class="card case-card">
-          <span class="badge badge-info" style="margin-bottom:12px">Leads de vários estados</span>
-          <p style="font-weight:500;margin-bottom:4px">Advogado Dr. Carlos Mendes</p>
-          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Advocacia · Atendimento remoto nacional</p>
-          <p class="before"><strong>Antes:</strong> dependia 100% de indicações, sem captação digital de clientes.</p>
-          <p class="after"><strong>Depois:</strong> captação de leads qualificados de múltiplos estados, agenda sempre ativa.</p>
+          <span class="badge badge-info">Advocacia</span>
+          <p class="case-result">Multi</p>
+          <p style="font-size:13px;color:var(--ink-3);margin-bottom:6px">leads de vários estados</p>
+          <p class="case-name">Advogado Dr. Carlos Mendes</p>
+          <p class="case-niche">Atendimento remoto nacional</p>
+          <div class="case-before-after">
+            <p class="case-before"><strong>Antes:</strong> dependia 100% de indicações, sem captação digital de clientes.</p>
+            <p class="case-after"><strong>Depois:</strong> captação de leads qualificados de múltiplos estados, agenda sempre ativa.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -419,29 +1061,46 @@
   <hr class="divider">
 
   <!-- ══ DEPOIMENTOS ═══════════════════════════════════ -->
-  <section>
+  <section class="testimonials-section">
     <div class="container">
-      <h2 style="font-size:26px;font-weight:700;text-align:center;margin-bottom:32px;color:var(--text-primary)">
-        O que dizem clientes de várias regiões do Brasil
-      </h2>
+      <span class="eyebrow" style="display:block;text-align:center">O que dizem nossos clientes</span>
+      <h2 class="section-title" style="text-align:center">Clientes de várias regiões<br>do Brasil</h2>
+
       <div class="testimonials-grid">
-        <div class="card">
-          <div style="margin-bottom:12px"><span class="star" style="color:#eab308;font-size:18px">★★★★★</span></div>
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-text">"Finalmente um site que realmente traz clientes. Em 2 meses já paguei o investimento várias vezes."</p>
-          <p class="testimonial-name">Fernanda Lima</p>
-          <p class="testimonial-role">Esteticista · São Paulo, SP</p>
+          <div class="testimonial-byline">
+            <div class="testimonial-avatar t-av-1">FL</div>
+            <div>
+              <p class="testimonial-name">Fernanda Lima</p>
+              <p class="testimonial-role">Esteticista · São Paulo, SP</p>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <div style="margin-bottom:12px"><span class="star" style="color:#eab308;font-size:18px">★★★★★</span></div>
+
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-text">"Minha loja agora vende para o Brasil inteiro. Antes ficava só esperando cliente entrar."</p>
-          <p class="testimonial-name">Ricardo Souza</p>
-          <p class="testimonial-role">Loja de eletrônicos · Belo Horizonte, MG</p>
+          <div class="testimonial-byline">
+            <div class="testimonial-avatar t-av-2">RS</div>
+            <div>
+              <p class="testimonial-name">Ricardo Souza</p>
+              <p class="testimonial-role">Loja de eletrônicos · Belo Horizonte, MG</p>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <div style="margin-bottom:12px"><span class="star" style="color:#eab308;font-size:18px">★★★★★</span></div>
+
+        <div class="card testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-text">"A garantia me convenceu. Mas não precisei usar — o resultado veio rápido mesmo."</p>
-          <p class="testimonial-name">Patrícia Alves</p>
-          <p class="testimonial-role">Consultora de RH · Curitiba, PR</p>
+          <div class="testimonial-byline">
+            <div class="testimonial-avatar t-av-3">PA</div>
+            <div>
+              <p class="testimonial-name">Patrícia Alves</p>
+              <p class="testimonial-role">Consultora de RH · Curitiba, PR</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -450,9 +1109,10 @@
   <hr class="divider">
 
   <!-- ══ FAQ ═══════════════════════════════════════════ -->
-  <section>
+  <section class="faq-section">
     <div class="container">
-      <h2 style="font-size:26px;font-weight:700;text-align:center;margin-bottom:32px">Dúvidas frequentes</h2>
+      <span class="eyebrow" style="display:block;text-align:center">Tire suas dúvidas</span>
+      <h2 class="section-title" style="text-align:center;margin-bottom:0">Dúvidas frequentes</h2>
       <div class="faq-list">
         <div class="card faq-item">
           <h3>Funciona para a minha cidade?</h3>
@@ -478,13 +1138,13 @@
 
   <!-- ══ CTA FINAL ══════════════════════════════════════ -->
   <section class="cta-final">
-    <div class="container">
-      <h2>Pronto para parar de perder clientes?</h2>
+    <div class="container" style="text-align:center">
+      <h2>Pronto para parar de<br>perder clientes?</h2>
       <p class="cta-sub">
         Preencha o diagnóstico gratuito e receba em até 24h um relatório personalizado com o que seu negócio precisa para crescer online.
       </p>
       <p class="cta-fine">Resposta via WhatsApp · Sem compromisso · Para qualquer cidade do Brasil</p>
-      <a href="https://wa.me/5551992771747?text=Quero+crescer+em+qualquer+lugar+do+Brasil" class="btn-primary" style="font-size:17px;padding:18px 40px">
+      <a href="https://wa.me/5551992771747?text=Quero+crescer+em+qualquer+lugar+do+Brasil" class="btn-primary" style="font-size:16px;padding:18px 38px">
         Quero crescer em qualquer lugar do Brasil →
       </a>
       <p class="cta-proof">Mais de 200 empresas de todo o Brasil já construíram suas camadas.</p>
