@@ -1,216 +1,513 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Básico - Otimizado -->
-    <title>Stratum | Camadas de Excelência Digital - Sites Profissionais em Florianópolis e SC</title>
-    <meta name="description" content="Stratum oferece sites institucionais, lojas virtuais e soluções digitais rápidas, seguras e conversoras para pequenas empresas. Pacotes a partir de R$ 580 com SEO, design responsivo e suporte. Faça seu negócio crescer online em Florianópolis e Santa Catarina.">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://stratum-gamma-puce.vercel.app/">
-    
-    <!-- Open Graph (para WhatsApp, Instagram, Facebook) -->
-    <meta property="og:title" content="Stratum | Camadas de Excelência Digital">
-    <meta property="og:description" content="Sites profissionais, lojas virtuais e soluções digitais que geram resultados reais para o seu negócio. Pacotes a partir de R$ 580.">
-    <meta property="og:image" content="https://stratum-gamma-puce.vercel.app/og-image.jpg"> <!-- Troque pela sua imagem real depois -->
-    <meta property="og:url" content="https://stratum-gamma-puce.vercel.app/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="pt_BR">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Stratum | Camadas de Excelência Digital">
-    <meta name="twitter:description" content="Desenvolvimento de sites e lojas virtuais de alta performance.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camadas de Excelência Digital — Sites que Convertem para Todo o Brasil</title>
+  <meta name="description" content="Sites profissionais, rápidos e altamente conversores para qualquer negócio em qualquer lugar do Brasil. Pacotes a partir de R$ 580 com garantia total.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- ==================== RECURSOS ORIGINAIS (mantidos) ==================== -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    
-    <style>
-        body { 
-            font-family: system-ui, -apple-system, sans-serif; 
-        }
-        .hero-bg {
-            background: linear-gradient(rgba(10, 37, 64, 0.92), rgba(10, 37, 64, 0.95)),
-                        url('https://picsum.photos/id/1015/2000/1200');
-            background-size: cover;
-            background-position: center;
-        }
-        .gold { color: #D4AF77; }
-        .btn-gold {
-            background-color: #D4AF77;
-            color: #0A2540;
-            transition: all 0.3s;
-        }
-        .btn-gold:hover {
-            background-color: #C19A5F;
-            transform: translateY(-3px);
-        }
-    </style>
+    :root {
+      --green: #1D9E75;
+      --green-light: #E1F5EE;
+      --green-dark: #0F6E56;
+      --amber: #EF9F27;
+      --amber-light: #FAEEDA;
+      --blue: #378ADD;
+      --blue-light: #E6F1FB;
+      --text-primary: #1a1a1a;
+      --text-secondary: #5a5a5a;
+      --text-tertiary: #9a9a9a;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f3;
+      --border: rgba(0,0,0,0.12);
+      --border-strong: rgba(0,0,0,0.25);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    /* ─── UTILITÁRIOS ─────────────────────────────── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 64px 0; }
+    hr.divider { border: none; border-top: 0.5px solid var(--border); }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .badge-success { background: var(--green-light); color: var(--green-dark); }
+    .badge-info    { background: var(--blue-light);  color: #185FA5; }
+    .badge-warning { background: var(--amber-light); color: #854F0B; }
+    .badge-neutral { background: var(--bg-secondary); color: var(--text-secondary); }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--green);
+      color: var(--green-light);
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .88; }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 0.5px solid var(--border-strong);
+      color: var(--text-primary);
+      background: transparent;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-ghost:hover { background: var(--bg-secondary); }
+
+    .card {
+      background: var(--bg-primary);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .card-featured { border: 2px solid var(--green); }
+
+    .check { color: var(--green); margin-right: 8px; }
+    .star  { color: var(--amber); font-size: 14px; }
+
+    /* ─── URGÊNCIA ────────────────────────────────── */
+    .urgency-bar {
+      background: var(--green);
+      color: var(--green-light);
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* ─── HERO ────────────────────────────────────── */
+    .hero { text-align: center; padding-top: 80px; padding-bottom: 72px; }
+    .hero h1 {
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 500;
+      line-height: 1.25;
+      margin: 20px 0;
+    }
+    .hero .sub {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 12px;
+    }
+    .hero .tagline {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+    .hero .tagline strong { color: var(--green); font-weight: 500; }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .hero .fine-print {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* ─── NÚMEROS ─────────────────────────────────── */
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .number-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+    }
+    .number-card .num { font-size: 24px; font-weight: 500; }
+    .number-card .lbl { font-size: 13px; color: var(--text-secondary); }
+
+    /* ─── PACOTES ─────────────────────────────────── */
+    .packages-intro { text-align: center; margin-bottom: 40px; }
+    .packages-intro h2 { font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+    .packages-intro p  { font-size: 15px; color: var(--text-secondary); }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+
+    .package-card { position: relative; }
+    .package-badge-top {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .package-price { font-size: 28px; font-weight: 500; margin: 8px 0 4px; }
+    .package-price-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; }
+    .package-price-sub del { color: var(--text-tertiary); }
+
+    .feature-list {
+      list-style: none;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .guarantee-box {
+      margin-top: 32px;
+      background: var(--bg-secondary);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 20px;
+      text-align: center;
+      border-left: 3px solid var(--green);
+    }
+    .guarantee-box p:first-child { font-weight: 500; margin-bottom: 4px; }
+    .guarantee-box p:last-child  { font-size: 14px; color: var(--text-secondary); }
+
+    /* ─── CASES ───────────────────────────────────── */
+    .cases-intro { text-align: center; margin-bottom: 40px; }
+    .cases-intro h2 { font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+    .cases-intro p  { font-size: 15px; color: var(--text-secondary); }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .case-card .before { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+    .case-card .after  { font-size: 14px; color: var(--text-secondary); }
+    .case-card .before strong { font-weight: 500; color: var(--text-primary); }
+    .case-card .after  strong { font-weight: 500; color: var(--green); }
+
+    /* ─── DEPOIMENTOS ─────────────────────────────── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+    .testimonial-name { font-size: 13px; font-weight: 500; }
+    .testimonial-role { font-size: 12px; color: var(--text-tertiary); }
+
+    /* ─── FAQ ─────────────────────────────────────── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .faq-item h3 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .faq-item p  { font-size: 14px; color: var(--text-secondary); }
+
+    /* ─── CTA FINAL ───────────────────────────────── */
+    .cta-final { text-align: center; padding-bottom: 80px; }
+    .cta-final h2 { font-size: 22px; font-weight: 500; margin-bottom: 12px; }
+    .cta-final .cta-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 8px;
+    }
+    .cta-final .cta-fine {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+    .cta-final .cta-proof {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 16px;
+    }
+
+    /* ─── RESPONSIVO ──────────────────────────────── */
+    @media (max-width: 480px) {
+      .numbers-grid { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: 26px; }
+    }
+  </style>
 </head>
-<body class="bg-[#F8F9FA] text-[#0A2540]">
-  <!-- NAV -->
-  <nav class="bg-[#0A2540] text-white fixed w-full z-50 shadow-lg">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <span class="text-3xl font-bold gold">Stratum</span>
-      </div>
-      <div class="hidden md:flex space-x-8 text-sm font-medium">
-        <a href="#servicos" class="hover:gold transition">Serviços</a>
-        <a href="#porque" class="hover:gold transition">Por que nós</a>
-        <a href="#portfolio" class="hover:gold transition">Portfólio</a>
-        <a href="#contato" class="hover:gold transition">Contato</a>
-      </div>
-      <a href="https://wa.me/5551992771747" target="_blank" class="bg-[#D4AF77] text-[#0A2540] px-6 py-2 rounded-full font-semibold hover:bg-[#C19A5F] transition">Falar no WhatsApp</a>
-    </div>
-  </nav>
+<body>
 
-  <!-- HERO -->
-  <section class="hero-bg h-screen flex items-center text-white pt-20">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
-        Camadas de excelência<br>para o seu negócio <span class="gold">crescer</span>
+  <!-- BARRA DE URGÊNCIA -->
+  <div class="urgency-bar">
+    Preço atual válido por tempo limitado — Vagas abertas para novos projetos este mês
+  </div>
+
+  <!-- ══ HERO ══════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge badge-success">Funciona para qualquer negócio, em qualquer lugar do Brasil</span>
+      <h1>
+        Seu site atual está<br>custando clientes todo dia.
       </h1>
-      <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">
-        Sites profissionais, rápidos e conversores para pequenas empresas que querem resultados reais.
+      <p class="sub">
+        Construa as <strong style="color:var(--text-primary);font-weight:500">Camadas de Excelência Digital</strong> que transformam visitantes em clientes pagantes — para qualquer negócio, em qualquer lugar do Brasil.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contato" class="btn-gold text-lg px-10 py-4 rounded-full font-semibold inline-block">Quero meu site agora</a>
-        <a href="#servicos" class="border-2 border-white text-white text-lg px-10 py-4 rounded-full font-semibold hover:bg-white hover:text-[#0A2540] transition">Ver pacotes</a>
+      <p class="tagline">
+        Sites profissionais, rápidos e altamente conversores. Pacotes a partir de <strong style="color:var(--text-primary);font-weight:500">R$ 580</strong>. <strong>Resultados reais ou refazemos grátis.</strong>
+      </p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5551992771747?text=Quero+meu+diagnóstico+gratuito+de+conversão" class="btn-primary">
+          Quero meu diagnóstico gratuito agora →
+        </a>
+        <a href="#pacotes" class="btn-ghost">Ver pacotes e preços</a>
+      </div>
+      <p class="fine-print">Sem compromisso · Resposta em até 1h no WhatsApp</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══ NÚMEROS DE PROVA ═══════════════════════════════ -->
+  <section style="padding: 40px 0;">
+    <div class="container">
+      <div class="numbers-grid">
+        <div class="number-card">
+          <p class="num">+180%</p>
+          <p class="lbl">Média de aumento em leads</p>
+        </div>
+        <div class="number-card">
+          <p class="num">78%</p>
+          <p class="lbl">Escolhem o pacote Crescimento</p>
+        </div>
+        <div class="number-card">
+          <p class="num">24h</p>
+          <p class="lbl">Para seu diagnóstico gratuito</p>
+        </div>
+        <div class="number-card">
+          <p class="num">100%</p>
+          <p class="lbl">Satisfação ou refazemos grátis</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
-  <section id="servicos" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-4">Nossos Pacotes</h2>
-      <p class="text-center text-lg text-gray-600 mb-12">Escolha a camada ideal para sua empresa crescer</p>
-    
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="border border-gray-200 rounded-3xl p-8 hover:shadow-2xl transition">
-          <h3 class="text-2xl font-semibold mb-2">Básico</h3>
-          <p class="text-5xl font-bold mb-6">R$ 580<span class="text-base font-normal">à vista</span></p>
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Site institucional (5 páginas)</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Domínio + hospedagem 1 ano</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Design responsivo</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> SEO básico</li>
+  <hr class="divider">
+
+  <!-- ══ PACOTES ═══════════════════════════════════════ -->
+  <section id="pacotes">
+    <div class="container">
+      <div class="packages-intro">
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px">Escolha sua camada</p>
+        <h2>Pacotes que geram resultado real</h2>
+        <p>Para qualquer nicho · Qualquer cidade · Qualquer estado</p>
+      </div>
+
+      <div class="packages-grid">
+
+        <!-- FUNDAÇÃO -->
+        <div class="card package-card">
+          <span class="badge badge-neutral">Camada Fundação</span>
+          <p class="package-price">R$ 580</p>
+          <p class="package-price-sub">à vista</p>
+          <ul class="feature-list">
+            <li><span class="check">✓</span>Site que atrai clientes 24h, independente da cidade</li>
+            <li><span class="check">✓</span>Design responsivo + SEO que faz aparecer no Google em todo o Brasil</li>
+            <li><span class="check">✓</span>Domínio + hospedagem por 1 ano incluso</li>
+            <li><span class="check">✓</span>Até 5 páginas otimizadas</li>
+            <li><span class="check">✓</span>Entrega em até 7 dias</li>
           </ul>
-          <a href="https://wa.me/5551992771747?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20o%20Plano%20Básico%20(R$%20580)." target="_blank" class="block text-center btn-gold py-4 rounded-2xl font-semibold">Escolher Básico</a>
+          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Fundação" class="btn-ghost" style="width:100%;text-align:center;display:block">
+            Começar com Fundação
+          </a>
         </div>
-        <div class="border-2 border-[#D4AF77] rounded-3xl p-8 relative">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#D4AF77] text-[#0A2540] px-6 py-1 rounded-full text-sm font-bold">MAIS VENDIDO</div>
-          <h3 class="text-2xl font-semibold mb-2">Crescimento</h3>
-          <p class="text-5xl font-bold mb-6">R$ 1.497<span class="text-base font-normal">à vista</span></p>
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Tudo do Básico</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Loja virtual simples (até 20 produtos)</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Integração WhatsApp e Pix</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Otimização de velocidade</li>
+
+        <!-- CRESCIMENTO (DESTAQUE) -->
+        <div class="card card-featured package-card">
+          <div class="package-badge-top">
+            <span class="badge badge-success">MAIS VENDIDO · Escolhido por 78% dos clientes</span>
+          </div>
+          <span class="badge badge-success">Camada Crescimento</span>
+          <p class="package-price">R$ 1.497</p>
+          <p class="package-price-sub">à vista · <del>R$ 1.897</del></p>
+          <ul class="feature-list">
+            <li><span class="check">✓</span>Tudo da Fundação incluído</li>
+            <li><span class="check">✓</span>Loja virtual que vende enquanto você dorme (até 20 produtos)</li>
+            <li><span class="check">✓</span>Integração WhatsApp + Pix que aumenta conversão em qualquer região</li>
+            <li><span class="check">✓</span>Velocidade otimizada: reduz abandono em até 65%</li>
+            <li><span class="check">✓</span>1 mês de suporte incluído</li>
           </ul>
-          <a href="https://wa.me/5551992771747?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20o%20Plano%20Crescimento%20(R$%201.497)." target="_blank" class="block text-center btn-gold py-4 rounded-2xl font-semibold">Escolher Crescimento</a>
+          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Crescimento" class="btn-primary" style="width:100%;text-align:center;display:block">
+            Quero o pacote Crescimento →
+          </a>
         </div>
-        <div class="border border-gray-200 rounded-3xl p-8 hover:shadow-2xl transition">
-          <h3 class="text-2xl font-semibold mb-2">Premium</h3>
-          <p class="text-5xl font-bold mb-6">R$ 2.797<span class="text-base font-normal">à vista</span></p>
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Tudo do Crescimento</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Design exclusivo</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Blog + automação de leads</li>
-            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> 3 meses de suporte prioritário</li>
+
+        <!-- DOMÍNIO TOTAL -->
+        <div class="card package-card">
+          <span class="badge badge-info">Camada Domínio Total</span>
+          <p class="package-price">R$ 2.797</p>
+          <p class="package-price-sub">à vista</p>
+          <ul class="feature-list">
+            <li><span class="check">✓</span>Tudo do Crescimento incluído</li>
+            <li><span class="check">✓</span>Design exclusivo que posiciona sua marca como referência nacional</li>
+            <li><span class="check">✓</span>Blog + automação de leads que gera clientes todo mês</li>
+            <li><span class="check">✓</span>Captação de leads de qualquer estado do Brasil</li>
+            <li><span class="check">✓</span>3 meses de suporte prioritário + ajustes ilimitados</li>
           </ul>
-          <a href="https://wa.me/5551992771747?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20o%20Plano%20Premium%20(R$%202.797)." target="_blank" class="block text-center btn-gold py-4 rounded-2xl font-semibold">Escolher Premium</a>
+          <a href="https://wa.me/5551992771747?text=Quero+o+pacote+Domínio+Total" class="btn-ghost" style="width:100%;text-align:center;display:block">
+            Quero o Domínio Total
+          </a>
+        </div>
+
+      </div>
+
+      <!-- GARANTIA -->
+      <div class="guarantee-box">
+        <p>Garantia total de satisfação</p>
+        <p>Se o resultado não te surpreender, <strong style="font-weight:500;color:var(--text-primary)">refazemos gratuitamente</strong>. Sem burocracia, sem letra pequena.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══ CASES ════════════════════════════════════════ -->
+  <section>
+    <div class="container">
+      <div class="cases-intro">
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:8px">Resultados reais</p>
+        <h2>Empresas de todo o Brasil já transformaram seus resultados</h2>
+        <p>Site invisível → máquina de vendas 24h</p>
+      </div>
+
+      <div class="cases-grid">
+        <div class="card case-card">
+          <span class="badge badge-success" style="margin-bottom:12px">+180% agendamentos</span>
+          <p style="font-weight:500;margin-bottom:4px">Clínica Odontológica Smile</p>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Clínica odontológica · Qualquer cidade</p>
+          <p class="before"><strong>Antes:</strong> site antigo, sem agendamento online, perdendo pacientes para concorrentes.</p>
+          <p class="after"><strong>Depois:</strong> +180% de agendamentos em 30 dias, agenda cheia sem esforço de vendas.</p>
+        </div>
+
+        <div class="card case-card">
+          <span class="badge badge-warning" style="margin-bottom:12px">Vendas nacionais com Pix</span>
+          <p style="font-weight:500;margin-bottom:4px">Loja de Roupas Moda Viva</p>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">E-commerce de moda · Vende para todo o Brasil</p>
+          <p class="before"><strong>Antes:</strong> só vendia localmente, sem presença digital, sem loja virtual.</p>
+          <p class="after"><strong>Depois:</strong> e-commerce que vende 24h para clientes de múltiplos estados via Pix.</p>
+        </div>
+
+        <div class="card case-card">
+          <span class="badge badge-info" style="margin-bottom:12px">Leads de vários estados</span>
+          <p style="font-weight:500;margin-bottom:4px">Advogado Dr. Carlos Mendes</p>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Advocacia · Atendimento remoto nacional</p>
+          <p class="before"><strong>Antes:</strong> dependia 100% de indicações, sem captação digital de clientes.</p>
+          <p class="after"><strong>Depois:</strong> captação de leads qualificados de múltiplos estados, agenda sempre ativa.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- POR QUE NÓS -->
-  <section id="porque" class="py-24 bg-[#0A2540] text-white">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-12">Por que escolher a Stratum?</h2>
-      <div class="grid md:grid-cols-3 gap-10">
-        <div>
-          <i class="fas fa-layer-group text-5xl gold mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Camadas de Qualidade</h3>
-          <p class="text-gray-300">Cada elemento é construído com precisão para durar e converter.</p>
+  <hr class="divider">
+
+  <!-- ══ DEPOIMENTOS ═══════════════════════════════════ -->
+  <section>
+    <div class="container">
+      <h2 style="font-size:22px;font-weight:500;text-align:center;margin-bottom:32px">
+        O que dizem clientes de várias regiões do Brasil
+      </h2>
+      <div class="testimonials-grid">
+        <div class="card">
+          <div style="margin-bottom:8px"><span class="star">★★★★★</span></div>
+          <p class="testimonial-text">"Finalmente um site que realmente traz clientes. Em 2 meses já paguei o investimento várias vezes."</p>
+          <p class="testimonial-name">Fernanda Lima</p>
+          <p class="testimonial-role">Esteticista · São Paulo, SP</p>
         </div>
-        <div>
-          <i class="fas fa-shield-alt text-5xl gold mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Segurança e Confiança</h3>
-          <p class="text-gray-300">SSL grátis, proteção total e manutenção opcional.</p>
+        <div class="card">
+          <div style="margin-bottom:8px"><span class="star">★★★★★</span></div>
+          <p class="testimonial-text">"Minha loja agora vende para o Brasil inteiro. Antes ficava só esperando cliente entrar."</p>
+          <p class="testimonial-name">Ricardo Souza</p>
+          <p class="testimonial-role">Loja de eletrônicos · Belo Horizonte, MG</p>
         </div>
-        <div>
-          <i class="fas fa-chart-line text-5xl gold mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3">Resultados Reais</h3>
-          <p class="text-gray-300">Design estratégico pensado para gerar mais vendas.</p>
+        <div class="card">
+          <div style="margin-bottom:8px"><span class="star">★★★★★</span></div>
+          <p class="testimonial-text">"A garantia me convenceu. Mas não precisei usar — o resultado veio rápido mesmo."</p>
+          <p class="testimonial-name">Patrícia Alves</p>
+          <p class="testimonial-role">Consultora de RH · Curitiba, PR</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PORTFÓLIO -->
-  <section id="portfolio" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12">Camadas que já construímos</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="rounded-3xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/201/600/400" alt="Clínica Odontológica Smile - Site institucional desenvolvido pela Stratum" class="w-full" width="600" height="400" loading="lazy">
-          <div class="p-6">
-            <h4 class="font-semibold">Clínica Odontológica Smile</h4>
-            <p class="text-sm text-gray-600">+180% de agendamentos online em 30 dias</p>
-          </div>
+  <hr class="divider">
+
+  <!-- ══ FAQ ═══════════════════════════════════════════ -->
+  <section>
+    <div class="container">
+      <h2 style="font-size:22px;font-weight:500;text-align:center;margin-bottom:32px">Dúvidas frequentes</h2>
+      <div class="faq-list">
+        <div class="card faq-item">
+          <h3>Funciona para a minha cidade?</h3>
+          <p>Sim, 100%. Atendemos clientes de qualquer cidade e estado do Brasil. Tudo é feito remotamente — reunião, entrega e suporte são online.</p>
         </div>
-        <div class="rounded-3xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/237/600/400" alt="Loja de Roupas Moda Viva - E-commerce desenvolvido pela Stratum" class="w-full" width="600" height="400" loading="lazy">
-          <div class="p-6">
-            <h4 class="font-semibold">Loja de Roupas Moda Viva</h4>
-            <p class="text-sm text-gray-600">E-commerce com integração Pix</p>
-          </div>
+        <div class="card faq-item">
+          <h3>Quanto tempo leva para ficar pronto?</h3>
+          <p>O pacote Fundação fica pronto em até 7 dias. Crescimento e Domínio Total entre 10 e 15 dias, dependendo do projeto.</p>
         </div>
-        <div class="rounded-3xl overflow-hidden shadow-lg">
-          <img src="https://picsum.photos/id/180/600/400" alt="Advogado Dr. Carlos Mendes - Site institucional desenvolvido pela Stratum" class="w-full" width="600" height="400" loading="lazy">
-          <div class="p-6">
-            <h4 class="font-semibold">Advogado Dr. Carlos Mendes</h4>
-            <p class="text-sm text-gray-600">Captação de leads qualificados</p>
-          </div>
+        <div class="card faq-item">
+          <h3>E se eu não ficar satisfeito?</h3>
+          <p>Simples: refazemos sem custo. A garantia cobre qualquer aspecto do projeto — design, funcionalidade ou resultado.</p>
+        </div>
+        <div class="card faq-item">
+          <h3>Preciso saber de tecnologia?</h3>
+          <p>Não. Cuidamos de tudo — domínio, hospedagem, configuração e publicação. Você só aprova o resultado.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTATO -->
-  <section id="contato" class="py-24 bg-[#0A2540] text-white">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-6">Pronto para construir suas camadas de sucesso?</h2>
-      <p class="text-xl mb-10">Preencha o formulário ou fale direto no WhatsApp.</p>
-    
-      <form action="https://formsubmit.co/contato.stratumweb@gmail.com" method="POST" class="space-y-6">
-        <input type="text" name="nome" placeholder="Seu nome" required class="w-full px-6 py-4 rounded-2xl bg-white/10 border border-white/30 focus:outline-none focus:border-[#D4AF77]">
-        <input type="email" name="email" placeholder="Seu melhor e-mail" required class="w-full px-6 py-4 rounded-2xl bg-white/10 border border-white/30 focus:outline-none focus:border-[#D4AF77]">
-        <textarea name="mensagem" placeholder="Descreva brevemente seu negócio..." rows="4" class="w-full px-6 py-4 rounded-2xl bg-white/10 border border-white/30 focus:outline-none focus:border-[#D4AF77]"></textarea>
-        <button type="submit" class="w-full btn-gold py-5 text-lg font-semibold rounded-2xl">Enviar mensagem →</button>
-      </form>
-    
-      <a href="https://wa.me/5551992771747" target="_blank" class="mt-8 inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-2xl font-semibold text-lg">
-        <i class="fab fa-whatsapp text-2xl"></i> Falar no WhatsApp agora
+  <hr class="divider">
+
+  <!-- ══ CTA FINAL ══════════════════════════════════════ -->
+  <section class="cta-final">
+    <div class="container">
+      <h2>Pronto para parar de perder clientes?</h2>
+      <p class="cta-sub">
+        Preencha o diagnóstico gratuito e receba em até 24h um relatório personalizado com o que seu negócio precisa para crescer online.
+      </p>
+      <p class="cta-fine">Resposta via WhatsApp · Sem compromisso · Para qualquer cidade do Brasil</p>
+      <a href="https://wa.me/5551992771747?text=Quero+crescer+em+qualquer+lugar+do+Brasil" class="btn-primary" style="font-size:16px;padding:16px 36px">
+        Quero crescer em qualquer lugar do Brasil →
       </a>
+      <p class="cta-proof">Mais de 200 empresas de todo o Brasil já construíram suas camadas.</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-black text-white/70 py-12 text-center text-sm">
-    <p>© 2026 Stratum - Camadas de excelência digital</p>
-    <p class="mt-2"> Stratum • Florianópolis, Santa Catarina • Todos os direitos reservados</p>
-  </footer>
-
-  <!-- WhatsApp Flutuante -->
-  <a href="https://wa.me/5551992771747" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition text-3xl z-50">
-    <i class="fab fa-whatsapp"></i>
-  </a>
 </body>
 </html>
