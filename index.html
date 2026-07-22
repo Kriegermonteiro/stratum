@@ -514,6 +514,58 @@
   }
   .diagnostic-next strong{ display:block; margin-bottom:3px; color:var(--grafite); }
 
+  /* CTA principal imediatamente após o diagnóstico */
+  .result-primary-action{
+    margin:18px 0 24px;
+    padding:20px;
+    border-radius:16px;
+    background:var(--preto);
+    color:var(--branco);
+    display:grid;
+    gap:14px;
+    align-items:center;
+    border:1px solid rgba(250,208,44,.35);
+  }
+  @media(min-width:680px){
+    .result-primary-action{grid-template-columns:minmax(0,1fr) auto;padding:22px 24px;}
+  }
+  .result-primary-action .action-kicker{
+    display:block;
+    color:var(--amarelo);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:5px;
+  }
+  .result-primary-action strong{display:block;font-family:var(--font-display);font-size:18px;margin-bottom:4px;}
+  .result-primary-action p{color:rgba(255,255,255,.68);font-size:13.5px;margin:0;}
+  .result-primary-action .btn{min-width:230px;}
+  .result-action-note{font-size:12px;color:rgba(255,255,255,.52);margin-top:7px;}
+
+  /* Barra fixa exibida somente após o resultado */
+  .result-sticky-action{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:130;
+    background:rgba(0,0,0,.96);
+    color:var(--branco);
+    border-top:1px solid rgba(250,208,44,.42);
+    box-shadow:0 -12px 32px rgba(0,0,0,.24);
+    padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+  }
+  .result-sticky-action[hidden]{display:none!important;}
+  body.result-ready .float-wa{display:none;}
+  .result-sticky-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .result-sticky-copy{display:none;}
+  .result-sticky-copy strong{display:block;font-size:13.5px;}
+  .result-sticky-copy span{display:block;color:rgba(255,255,255,.58);font-size:11.5px;margin-top:1px;}
+  .result-sticky-action .btn{width:100%;padding:14px 22px;}
+  @media(min-width:720px){
+    .result-sticky-copy{display:block;}
+    .result-sticky-action .btn{width:auto;min-width:260px;}
+  }
+
 
   /* ===== Simulador Dashboard Premium ===== */
   .sim-feature-strip{display:grid;grid-template-columns:1fr;gap:10px;margin:28px 0 22px;}
@@ -859,6 +911,16 @@
             </div>
           </div>
 
+          <div class="result-primary-action" id="diag-primary-action">
+            <div>
+              <span class="action-kicker">Próximo passo recomendado</span>
+              <strong id="diag-action-title">Vale conferir seu cenário com o atendente</strong>
+              <p id="diag-action-text">Sua simulação já preparou uma mensagem curta para iniciar a conversa.</p>
+              <div class="result-action-note">Você só será direcionado ao WhatsApp quando clicar.</div>
+            </div>
+            <a class="btn btn-primary wa-result-link" id="diag-wa-cta" href="#" data-event="click_whatsapp_result">Falar com o atendente agora</a>
+          </div>
+
           <div class="dashboard-metrics">
             <div class="dashboard-card">
               <span class="dashboard-icon">↗</span>
@@ -906,8 +968,6 @@
             <strong>Seu resultado sugere um caminho para tentar, não uma aprovação garantida.</strong>
             A decisão sobre financiamento, juros, entrada e parcelas é do banco. Ainda assim, suas respostas podem revelar elementos positivos que justificam uma análise real com o vendedor.
           </div>
-          <a class="btn btn-primary btn-block wa-result-link" id="diag-wa-cta" href="#" data-event="click_whatsapp_result">Falar com o vendedor sobre este resultado</a>
-          <p class="redirect-note">Ao clicar, o WhatsApp será aberto no número <strong>(51) 98958-0303</strong> com uma mensagem personalizada para o seu cenário.</p>
           <div class="hero-ctas" style="margin-top:14px;">
             <button type="button" class="btn btn-outline dark" style="border-color:rgba(0,0,0,.2)" id="sim-restart">Refazer simulação</button>
           </div>
@@ -1135,6 +1195,16 @@
   </div>
 </footer>
 
+<div class="result-sticky-action" id="result-sticky-action" hidden aria-live="polite">
+  <div class="result-sticky-inner">
+    <div class="result-sticky-copy">
+      <strong id="diag-sticky-title">Seu resultado está pronto</strong>
+      <span>Converse com o atendente para verificar as possibilidades reais.</span>
+    </div>
+    <a class="btn btn-primary wa-result-link" id="diag-wa-sticky" href="#" data-event="click_whatsapp_result_sticky">Falar com o atendente</a>
+  </div>
+</div>
+
 <script>
 (function(){
   window.dataLayer = window.dataLayer || [];
@@ -1151,21 +1221,11 @@
     utm_content: params.get('utm_content') || '',
     utm_term: params.get('utm_term') || ''
   };
-  var leadId = 'lead_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,8);
   var WHATSAPP_NUMBER = '5551989580303'; // Brasil 55 + número informado 51 98958-0303
   track('view_landing_page', utm);
 
   function waUrl(message){
     return 'https://api.whatsapp.com/send/?phone=' + WHATSAPP_NUMBER + '&text=' + encodeURIComponent(message) + '&type=phone_number&app_absent=0';
-  }
-
-  function sourceLines(){
-    return [
-      'Origem: ' + (utm.utm_source || 'acesso direto'),
-      'Campanha: ' + (utm.utm_campaign || '-'),
-      'Conteúdo: ' + (utm.utm_content || '-'),
-      'ID da simulação: ' + leadId
-    ];
   }
 
   function bindWhatsAppLink(link, message, eventName, extra){
@@ -1192,7 +1252,7 @@
 
   document.querySelectorAll('.wa-direct').forEach(function(link){
     var scenario = link.getAttribute('data-wa-scenario') || 'footer';
-    var body = (directMessages[scenario] || directMessages.footer).concat([''], sourceLines()).join('\n');
+    var body = (directMessages[scenario] || directMessages.footer).join('\n');
     bindWhatsAppLink(link, body, link.getAttribute('data-event') || 'click_whatsapp_direct', {scenario:scenario});
   });
 
@@ -1487,24 +1547,61 @@
   function paymentLabel(value){
     return {cartao:'Cartão em até 21x sem juros',pix:'PIX ou dinheiro',financiamento:'Financiamento bancário',comparar:'Comparar todas as opções'}[value]||value||'-';
   }
+  function shortModel(value){
+    if(value==='Duact Maxus') return 'Maxus';
+    if(value==='Duact X13') return 'X13';
+    if(value==='Quero comparar os dois') return 'Maxus e X13';
+    return 'Duact';
+  }
+
+  function shortTiming(value){
+    return {
+      'O mais rápido possível':'quero avançar agora',
+      'Nos próximos 30 dias':'penso em comprar nos próximos 30 dias',
+      'Nos próximos três meses':'estou me organizando para os próximos meses',
+      'Ainda estou pesquisando':'ainda estou pesquisando'
+    }[value] || 'quero entender as possibilidades';
+  }
+
   function buildDiagnosticMessage(diag){
-    var opening=diag.key==='financiamento'
-      ? 'Olá! Minha simulação indicou que existe um cenário que vale tentar em uma análise de financiamento da Duact.'
-      : 'Olá! Fiz a simulação gratuita na página da Duact e meu resultado mostrou uma possibilidade que quero entender melhor.';
-    var lines=[
-      opening,'',
-      'Resultado: '+diag.title,
-      'Leitura do cenário: '+diag.profile,
-      'Caminho indicado: '+diag.path,'',
-      'Modelo de interesse: '+(answers.modelo||'-'),
-      'Forma de compra: '+paymentLabel(answers.forma_pagamento),
-      'Gasto diário de mobilidade: '+(answers.gasto_diario||'-'),
-      'Momento de compra: '+(answers.momento_compra||'-')
-    ];
-    var extra=answers.forma_pagamento==='financiamento'?answers.entrada:answers.condicional;
-    if(extra) lines.push('Informação financeira selecionada: '+extra);
-    lines.push('',diag.hopeTitle+'.',diag.hopeText,'','Quero saber quais dados são necessários e quais condições podem existir para o meu cenário.');
-    return lines.concat([''],sourceLines()).join('\n');
+    var model=shortModel(answers.modelo);
+    var timing=shortTiming(answers.momento_compra);
+
+    if(answers.forma_pagamento==='financiamento'){
+      var entry=answers.entrada || 'entrada ainda não definida';
+      return [
+        'Olá! Fiz a simulação da Duact.',
+        'Meu cenário mostrou que vale tentar uma análise de financiamento para a '+model+'.',
+        'Entrada: '+entry+'; '+timing+'.',
+        'Pode me orientar sobre as possibilidades?'
+      ].join('\n');
+    }
+
+    if(answers.forma_pagamento==='cartao'){
+      var cardStatus=answers.condicional || 'limite ainda não verificado';
+      return [
+        'Olá! Fiz a simulação da Duact.',
+        'O cartão apareceu como um possível caminho para a '+model+'.',
+        'Situação do limite: '+cardStatus+'; '+timing+'.',
+        'Pode me explicar como funciona?'
+      ].join('\n');
+    }
+
+    if(answers.forma_pagamento==='pix'){
+      return [
+        'Olá! Fiz a simulação da Duact.',
+        'Quero conhecer a condição à vista da '+model+'.',
+        'Meu momento: '+timing+'.',
+        'Pode confirmar o valor e a disponibilidade?'
+      ].join('\n');
+    }
+
+    return [
+      'Olá! Fiz a simulação da Duact.',
+      'Meu resultado indicou que vale comparar as opções para a '+model+'.',
+      'Eu '+timing+'.',
+      'Qual caminho pode funcionar melhor para mim?'
+    ].join('\n');
   }
 
   function showDiagnostic(){
@@ -1531,6 +1628,27 @@
     document.getElementById('diag-score').textContent=diag.score;
     document.getElementById('diag-gauge').style.setProperty('--score',diag.score);
     document.getElementById('diag-wa-cta').textContent=diag.cta;
+    document.getElementById('diag-wa-sticky').textContent='Falar com o atendente agora';
+    var actionTitle=document.getElementById('diag-action-title');
+    var actionText=document.getElementById('diag-action-text');
+    var stickyTitle=document.getElementById('diag-sticky-title');
+    if(answers.forma_pagamento==='financiamento'){
+      actionTitle.textContent='Seu cenário mostra que vale tentar uma análise';
+      actionText.textContent='O atendente pode verificar entrada, parcelas e condições possíveis para o seu caso.';
+      stickyTitle.textContent='Vale tentar uma análise de financiamento';
+    }else if(answers.forma_pagamento==='cartao'){
+      actionTitle.textContent='Confira se o cartão pode viabilizar sua compra';
+      actionText.textContent='Converse agora para entender limite, divisão e próximos passos.';
+      stickyTitle.textContent='Confira sua possibilidade no cartão';
+    }else if(answers.forma_pagamento==='pix'){
+      actionTitle.textContent='Confirme a condição especial à vista';
+      actionText.textContent='O atendente pode confirmar valor, modelo e disponibilidade.';
+      stickyTitle.textContent='Confirme a condição à vista';
+    }else{
+      actionTitle.textContent='Compare os caminhos antes de decidir';
+      actionText.textContent='O atendente pode mostrar qual opção se aproxima mais do seu cenário.';
+      stickyTitle.textContent='Compare suas possibilidades';
+    }
 
     var insights=document.getElementById('diag-answer-insights');
     insights.innerHTML='';
@@ -1544,12 +1662,16 @@
     var points=document.getElementById('diag-points');points.innerHTML='';
     diag.points.forEach(function(point){var li=document.createElement('li');li.textContent=point;points.appendChild(li);});
 
-    var resultLink=document.getElementById('diag-wa-cta');
-    var newLink=resultLink.cloneNode(true);
-    resultLink.parentNode.replaceChild(newLink,resultLink);
-    bindWhatsAppLink(newLink,buildDiagnosticMessage(diag),newLink.getAttribute('data-event')||'click_whatsapp_result',{result:diag.key,score:diag.score});
+    ['diag-wa-cta','diag-wa-sticky'].forEach(function(linkId){
+      var resultLink=document.getElementById(linkId);
+      var newLink=resultLink.cloneNode(true);
+      resultLink.parentNode.replaceChild(newLink,resultLink);
+      bindWhatsAppLink(newLink,buildDiagnosticMessage(diag),newLink.getAttribute('data-event')||'click_whatsapp_result',{result:diag.key,score:diag.score});
+    });
 
     resultsBox.style.display='block';
+    document.getElementById('result-sticky-action').hidden=false;
+    document.body.classList.add('result-ready');
     shell.scrollIntoView({behavior:'smooth',block:'start'});
 
     var restart=document.getElementById('sim-restart');
@@ -1559,6 +1681,8 @@
       flowState=['rotina'];resultsBox.style.display='none';form.hidden=false;
       document.querySelector('.sim-progress-track').hidden=false;
       document.querySelector('.sim-progress-head').hidden=false;
+      document.getElementById('result-sticky-action').hidden=true;
+      document.body.classList.remove('result-ready');
       backBtn.hidden=false;showStep('rotina');shell.scrollIntoView({behavior:'smooth',block:'start'});track('restart_simulation');
     };
   }
