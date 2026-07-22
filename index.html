@@ -427,6 +427,154 @@
 
   .visually-hidden-toggle[hidden]{ display:none; }
   .sr-only{ position:absolute; width:1px;height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+
+  .hero-sub-direct{ color:rgba(255,255,255,.86); font-weight:500; }
+  .hero-sub-action{
+    margin-top:10px;
+    padding:13px 15px;
+    border-left:3px solid var(--amarelo);
+    background:rgba(255,255,255,.06);
+    border-radius:0 10px 10px 0;
+    color:rgba(255,255,255,.78);
+  }
+  .hero-sub-action strong{ color:var(--branco); }
+  .hero-direct-line{ margin-top:16px; color:rgba(255,255,255,.62); font-size:13.5px; }
+  .hero-direct-line a, .sim-direct-line a{ color:var(--amarelo); font-weight:800; text-decoration:underline; text-underline-offset:3px; }
+  .sim-direct-line{ margin-top:12px; color:rgba(255,255,255,.62); font-size:13.5px; }
+
+
+  #sim-results{ display:none; }
+  .diagnostic-head{ margin-bottom:24px; }
+  .diagnostic-kicker{
+    display:inline-flex;
+    align-items:center;
+    padding:6px 10px;
+    border-radius:999px;
+    background:var(--amarelo);
+    color:var(--preto);
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  .diagnostic-head h3{ font-size:clamp(23px,4vw,30px); margin-bottom:10px; }
+  .diagnostic-head p{ color:var(--cinza-sec); font-size:15.5px; }
+  .diagnostic-grid{ display:grid; gap:12px; margin:20px 0; }
+  @media (min-width:620px){ .diagnostic-grid{ grid-template-columns:1fr 1fr; } }
+  .diagnostic-card{
+    border:1px solid rgba(0,0,0,.10);
+    background:var(--cinza-claro);
+    border-radius:13px;
+    padding:18px;
+  }
+  .diagnostic-label{
+    display:block;
+    color:var(--cinza-sec);
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .diagnostic-card strong{ display:block; font-family:var(--font-display); font-size:17px; margin-bottom:6px; }
+  .diagnostic-card p{ color:var(--cinza-sec); font-size:13.5px; }
+  .diagnostic-points{ display:grid; gap:10px; margin:20px 0; }
+  .diagnostic-points li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:12px 14px;
+    border-radius:10px;
+    background:var(--branco);
+    border:1px solid rgba(0,0,0,.08);
+    font-size:14px;
+  }
+  .diagnostic-points li::before{
+    content:'✓';
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:21px;
+    height:21px;
+    border-radius:50%;
+    background:var(--amarelo);
+    color:var(--preto);
+    font-weight:800;
+    flex:none;
+  }
+  .diagnostic-next{
+    padding:15px 16px;
+    background:#fff8d7;
+    border-left:3px solid var(--amarelo);
+    border-radius:0 10px 10px 0;
+    font-size:13.5px;
+    color:#4c451f;
+    margin:18px 0 20px;
+  }
+  .diagnostic-next strong{ display:block; margin-bottom:3px; color:var(--grafite); }
+
+
+  /* ===== Simulador Dashboard Premium ===== */
+  .sim-feature-strip{display:grid;grid-template-columns:1fr;gap:10px;margin:28px 0 22px;}
+  .sim-feature-strip>div{padding:14px 16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);border-radius:12px;display:flex;flex-direction:column;}
+  .sim-feature-strip strong{font-family:var(--font-display);font-size:14px;color:var(--branco);}
+  .sim-feature-strip span{font-size:12.5px;color:rgba(255,255,255,.56);}
+  @media(min-width:680px){.sim-feature-strip{grid-template-columns:repeat(3,1fr);}}
+  .sim-experience{display:grid;gap:20px;align-items:stretch;}
+  @media(min-width:980px){.sim-experience{grid-template-columns:320px minmax(0,1fr);gap:24px;}}
+  .sim-overview-panel{border-radius:20px;padding:28px;background:linear-gradient(160deg,#262626,#0c0c0c);border:1px solid rgba(255,255,255,.1);position:relative;overflow:hidden;}
+  .sim-overview-panel::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(250,208,44,.12);right:-80px;bottom:-80px;filter:blur(2px);}
+  .sim-panel-kicker{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--amarelo);margin-bottom:12px;}
+  .sim-overview-panel h3{font-size:23px;margin-bottom:12px;position:relative;z-index:1;}
+  .sim-overview-panel>p{font-size:14px;color:rgba(255,255,255,.62);position:relative;z-index:1;}
+  .sim-panel-list{display:grid;gap:12px;margin-top:26px;position:relative;z-index:1;}
+  .sim-panel-item{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-top:1px solid rgba(255,255,255,.09);}
+  .sim-panel-item:first-child{border-top:0;}
+  .sim-panel-item>span{width:30px;height:30px;border-radius:9px;background:var(--amarelo);color:var(--preto);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:none;}
+  .sim-panel-item strong{display:block;font-size:13.5px;color:#fff;margin-bottom:2px;}
+  .sim-panel-item small{display:block;color:rgba(255,255,255,.5);font-size:12px;line-height:1.4;}
+  .sim-panel-note{margin-top:22px;padding:13px 14px;background:rgba(250,208,44,.09);border-left:3px solid var(--amarelo);border-radius:0 10px 10px 0;font-size:12.5px;color:rgba(255,255,255,.7);position:relative;z-index:1;}
+  .sim-shell{margin-top:0;max-width:none;padding:26px 20px;}
+  @media(min-width:640px){.sim-shell{padding:34px;}}
+  .sim-progress-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:12px;}
+  .sim-progress-head span{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--cinza-sec);}
+  .sim-progress-head strong{display:block;font-family:var(--font-display);font-size:14px;margin-top:3px;}
+  .sim-progress-percent{font-family:var(--font-display);font-size:18px!important;color:var(--preto)!important;}
+  .sim-question-help{font-size:13px;color:var(--cinza-sec);margin:-12px 0 18px;}
+  .sim-option{display:flex;justify-content:space-between;align-items:center;gap:14px;}
+  .sim-option span{font-weight:700;}
+  .sim-option small{display:block;text-align:right;color:var(--cinza-sec);font-size:11.5px;font-weight:500;}
+  .sim-option.selected small{color:rgba(0,0,0,.65);}
+  #sim-results{display:none;}
+  .result-dashboard-head{display:grid;gap:22px;align-items:center;margin-bottom:22px;}
+  @media(min-width:720px){.result-dashboard-head{grid-template-columns:minmax(0,1fr) 180px;}}
+  .result-gauge{--score:50;width:168px;height:168px;border-radius:50%;background:conic-gradient(var(--amarelo) calc(var(--score)*1%),#ecece8 0);display:grid;place-items:center;margin:0 auto;position:relative;}
+  .result-gauge::before{content:"";position:absolute;inset:12px;border-radius:50%;background:#fff;}
+  .result-gauge-inner{position:relative;z-index:1;text-align:center;padding:12px;}
+  .result-gauge-inner strong{display:block;font-family:var(--font-display);font-size:38px;line-height:1;color:var(--grafite);}
+  .result-gauge-inner span{display:block;margin-top:6px;font-size:10.5px;line-height:1.3;text-transform:uppercase;letter-spacing:.06em;color:var(--cinza-sec);font-weight:800;}
+  .dashboard-metrics{display:grid;gap:12px;margin:18px 0;}
+  @media(min-width:660px){.dashboard-metrics{grid-template-columns:1fr 1fr;}}
+  .dashboard-card{position:relative;padding:18px 18px 17px;border-radius:14px;background:linear-gradient(180deg,#fafaf8,#f1f1ed);border:1px solid rgba(0,0,0,.08);min-height:142px;}
+  .dashboard-icon{position:absolute;right:15px;top:14px;width:32px;height:32px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--preto);box-shadow:0 4px 12px rgba(0,0,0,.06);}
+  .dashboard-card strong{display:block;font-family:var(--font-display);font-size:16px;max-width:80%;margin-bottom:6px;}
+  .dashboard-card p{font-size:12.8px;color:var(--cinza-sec);max-width:90%;}
+  .hope-callout{margin:20px 0;padding:22px;border-radius:15px;background:linear-gradient(135deg,#fff8d7,#fffdf3);border:1px solid rgba(250,208,44,.65);position:relative;overflow:hidden;}
+  .hope-callout::after{content:"↗";position:absolute;right:18px;top:12px;font-size:48px;color:rgba(250,208,44,.4);font-weight:800;}
+  .hope-callout>span{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#7a6511;margin-bottom:6px;}
+  .hope-callout strong{display:block;font-family:var(--font-display);font-size:20px;max-width:85%;margin-bottom:7px;}
+  .hope-callout p{font-size:14px;color:#5b522d;max-width:90%;}
+  .answer-breakdown{margin:22px 0;}
+  .answer-breakdown-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin-bottom:12px;}
+  .answer-breakdown h4{font-size:16px;}
+  .answer-breakdown-head p{font-size:12px;color:var(--cinza-sec);}
+  .answer-insights{display:grid;gap:9px;}
+  .answer-insight{display:grid;grid-template-columns:34px minmax(0,1fr);gap:11px;padding:12px 13px;border:1px solid rgba(0,0,0,.08);border-radius:11px;background:#fff;}
+  .answer-insight-index{width:30px;height:30px;border-radius:9px;background:var(--grafite);color:var(--amarelo);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
+  .answer-insight strong{display:block;font-size:13px;margin-bottom:2px;}
+  .answer-insight p{font-size:12.5px;color:var(--cinza-sec);}
+
 </style>
 </head>
 <body>
@@ -443,13 +591,13 @@
       <a href="#formas">Formas de comprar</a>
       <a href="#faq">Dúvidas</a>
     </nav>
-    <a href="#simulador" class="btn btn-primary header-cta" data-event="click_primary_cta">Falar com o vendedor</a>
-    <a href="#simulador" class="btn btn-primary header-cta-mobile" style="padding:10px 18px;font-size:13.5px;" data-event="click_whatsapp_header">Falar agora</a>
+    <a href="#" class="btn btn-primary header-cta wa-direct" data-wa-scenario="header" data-event="click_whatsapp_header">Falar com o vendedor</a>
+    <a href="#" class="btn btn-primary header-cta-mobile wa-direct" style="padding:10px 18px;font-size:13.5px;" data-wa-scenario="header_mobile" data-event="click_whatsapp_header">Falar agora</a>
   </div>
 </header>
 
 <!-- Floating WhatsApp -->
-<a href="#simulador" class="float-wa" aria-label="Falar com o vendedor no WhatsApp" data-event="click_whatsapp_header">
+<a href="#" class="float-wa wa-direct" aria-label="Falar com o vendedor no WhatsApp" data-wa-scenario="floating" data-event="click_whatsapp_floating">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.28-1.38a9.9 9.9 0 0 0 4.7 1.2h.01c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.3-1.94 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.3-1.63-.6-2.87-1.24-4.74-4.14-4.88-4.33-.14-.19-1.17-1.56-1.17-2.98 0-1.42.75-2.11 1.01-2.4.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.29.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.38-.24.64-.14.26.1 1.66.78 1.94.93.28.14.47.21.53.33.07.12.07.68-.17 1.36Z"/></svg>
 </a>
 
@@ -459,15 +607,15 @@
     <div>
       <span class="eyebrow">Simule em menos de 2 minutos</span>
       <h1>Talvez você já possa comprar a sua Duact, só não sabia que era tão fácil assim!</h1>
-      <p class="hero-sub">Existem diferentes caminhos para comprar: em até 21 vezes sem juros no cartão, com uma condição especial à vista ou por financiamento sujeito à análise do banco.</p>
-      <p class="hero-sub">Responda algumas perguntas rápidas e descubra qual opção pode fazer mais sentido para você.</p>
+      <p class="hero-sub hero-sub-direct">Você pode comprar em até 21x sem juros no cartão, aproveitar o valor especial no PIX ou dinheiro. Temos ainda a possibilidade de um financiamento! Simule agora mesmo.</p>
       <div class="hero-ctas">
-        <a href="#simulador" class="btn btn-primary" data-event="click_primary_cta">Descobrir minha melhor opção</a>
+        <a href="#simulador" class="btn btn-primary" data-event="click_primary_cta">Simulação grátis</a>
         <a href="#modelos" class="btn btn-outline" data-event="click_models_cta">Conhecer os modelos</a>
       </div>
+      <p class="hero-direct-line">Prefere conversar agora? <a href="#" class="wa-direct" data-wa-scenario="hero_direct" data-event="click_whatsapp_hero_direct">Fale direto com o vendedor.</a></p>
       <ul class="hero-support">
         <li>Simulação rápida</li>
-        <li>Resultado sem compromisso</li>
+        <li>Diagnóstico inicial na hora</li>
         <li>Atendimento direto com o vendedor</li>
       </ul>
     </div>
@@ -574,170 +722,197 @@
 <!-- ============ SIMULADOR ============ -->
 <section class="simulador" id="simulador">
   <div class="container">
-    <span class="eyebrow">Poucas perguntas</span>
-    <h2 class="section-title" style="color:#fff;">Descubra qual caminho pode fazer mais sentido para você</h2>
-    <p class="section-sub" style="color:rgba(255,255,255,.65);">São poucas perguntas. No final, suas respostas serão enviadas ao vendedor para que ele apresente as possibilidades mais adequadas.</p>
+    <span class="eyebrow">Simulação inteligente e gratuita</span>
+    <h2 class="section-title" style="color:#fff;">Veja se o seu cenário tem sinais positivos para avançar</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.72);">Responda algumas opções e receba, na hora, uma leitura personalizada do seu momento. Não pedimos nome, telefone ou qualquer dado pessoal. Se o resultado despertar seu interesse, você escolhe falar com o vendedor.</p>
+    <p class="sim-direct-line">Prefere conversar sem simular? <a href="#" class="wa-direct" data-wa-scenario="simulator_direct" data-event="click_whatsapp_simulator_direct">Fale direto com o vendedor.</a></p>
 
-    <div class="sim-shell" id="sim-shell">
+    <div class="sim-feature-strip" aria-label="Benefícios da simulação">
+      <div><strong>100% gratuita</strong><span>Sem compromisso</span></div>
+      <div><strong>Sem dados pessoais</strong><span>Somente múltipla escolha</span></div>
+      <div><strong>Resultado imediato</strong><span>Leitura personalizada</span></div>
+    </div>
 
-      <!-- progress -->
-      <div class="sim-progress-track"><div class="sim-progress-fill" id="sim-progress"></div></div>
-
-      <!-- STEP FORM -->
-      <form id="sim-form" novalidate>
-
-        <!-- ETAPA 1 -->
-        <div class="sim-step" data-step="rotina">
-          <div class="sim-step-label">Etapa 1 de 6</div>
-          <div class="sim-question">Quanto você costuma gastar por dia para ir, voltar e cumprir os compromissos da sua rotina?</div>
-          <div class="sim-options" data-field="gasto_diario">
-            <button type="button" class="sim-option" data-value="Até R$ 10">Até R$ 10</button>
-            <button type="button" class="sim-option" data-value="De R$ 11 a R$ 20">De R$ 11 a R$ 20</button>
-            <button type="button" class="sim-option" data-value="De R$ 21 a R$ 30">De R$ 21 a R$ 30</button>
-            <button type="button" class="sim-option" data-value="Mais de R$ 30">Mais de R$ 30</button>
-            <button type="button" class="sim-option" data-value="Não sei calcular">Não sei calcular</button>
-          </div>
+    <div class="sim-experience">
+      <aside class="sim-overview-panel">
+        <span class="sim-panel-kicker">Seu cenário em poucos passos</span>
+        <h3>Uma leitura simples para mostrar por onde vale começar.</h3>
+        <p>A simulação cruza seu gasto de mobilidade, modelo desejado, forma de compra, disponibilidade financeira e momento de decisão.</p>
+        <div class="sim-panel-list">
+          <div class="sim-panel-item"><span>01</span><div><strong>Escolha seu cenário</strong><small>Você responde apenas o que já sabe.</small></div></div>
+          <div class="sim-panel-item"><span>02</span><div><strong>Receba o diagnóstico</strong><small>Cada resposta altera o resultado.</small></div></div>
+          <div class="sim-panel-item"><span>03</span><div><strong>Decida se quer avançar</strong><small>O WhatsApp só abre quando você clicar.</small></div></div>
         </div>
+        <div class="sim-panel-note">A leitura não é uma aprovação bancária. Ela indica se existem elementos que justificam tentar uma análise real.</div>
+      </aside>
 
-        <!-- ETAPA 2 -->
-        <div class="sim-step" data-step="modelo" hidden>
-          <div class="sim-step-label">Etapa 2 de 6</div>
-          <div class="sim-question">Qual modelo você gostaria de conhecer?</div>
-          <div class="sim-options" data-field="modelo">
-            <button type="button" class="sim-option" data-value="Duact Maxus">Duact Maxus</button>
-            <button type="button" class="sim-option" data-value="Duact X13">Duact X13</button>
-            <button type="button" class="sim-option" data-value="Quero comparar os dois">Quero comparar os dois</button>
-            <button type="button" class="sim-option" data-value="Ainda não sei qual escolher">Ainda não sei qual escolher</button>
+      <div class="sim-shell" id="sim-shell">
+        <div class="sim-progress-head">
+          <div>
+            <span id="sim-progress-label">Etapa 1 de 5</span>
+            <strong id="sim-progress-title">Sua rotina de mobilidade</strong>
           </div>
+          <span class="sim-progress-percent" id="sim-progress-percent">20%</span>
         </div>
+        <div class="sim-progress-track"><div class="sim-progress-fill" id="sim-progress"></div></div>
 
-        <!-- ETAPA 3 -->
-        <div class="sim-step" data-step="forma" hidden>
-          <div class="sim-step-label">Etapa 3 de 6</div>
-          <div class="sim-question">Qual forma de compra parece mais interessante para você?</div>
-          <div class="sim-options" data-field="forma_pagamento">
-            <button type="button" class="sim-option" data-value="cartao" data-event="select_card_payment">Cartão em até 21 vezes sem juros</button>
-            <button type="button" class="sim-option" data-value="pix" data-event="select_cash_payment">PIX ou dinheiro</button>
-            <button type="button" class="sim-option" data-value="financiamento" data-event="select_financing">Financiamento bancário</button>
-            <button type="button" class="sim-option" data-value="comparar">Quero comparar todas as opções</button>
-          </div>
-        </div>
-
-        <!-- ETAPA 4a — cartão -->
-        <div class="sim-step" data-step="cond-cartao" hidden>
-          <div class="sim-step-label">Etapa 4 de 6</div>
-          <div class="sim-question">Você possui cartão com limite disponível para analisar a compra?</div>
-          <div class="sim-options" data-field="condicional">
-            <button type="button" class="sim-option" data-value="Sim">Sim</button>
-            <button type="button" class="sim-option" data-value="Parcialmente">Parcialmente</button>
-            <button type="button" class="sim-option" data-value="Ainda não sei">Ainda não sei</button>
-            <button type="button" class="sim-option" data-value="Quero conversar com o vendedor">Quero conversar com o vendedor</button>
-          </div>
-        </div>
-
-        <!-- ETAPA 4b — financiamento -->
-        <div class="sim-step" data-step="cond-financiamento" hidden>
-          <div class="sim-step-label">Etapa 4 de 6</div>
-          <div class="sim-question">Você possui algum valor disponível para dar de entrada?</div>
-          <div class="sim-options" data-field="entrada">
-            <button type="button" class="sim-option" data-value="Ainda não">Ainda não</button>
-            <button type="button" class="sim-option" data-value="Até R$ 1.000">Até R$ 1.000</button>
-            <button type="button" class="sim-option" data-value="De R$ 1.001 a R$ 3.000">De R$ 1.001 a R$ 3.000</button>
-            <button type="button" class="sim-option" data-value="Mais de R$ 3.000">Mais de R$ 3.000</button>
-            <button type="button" class="sim-option" data-value="Prefiro conversar sobre isso">Prefiro conversar sobre isso</button>
-          </div>
-        </div>
-
-        <!-- ETAPA 4c — pix/dinheiro (também cobre o momento da compra) -->
-        <div class="sim-step" data-step="cond-pix" hidden>
-          <div class="sim-step-label">Etapa 4 de 6</div>
-          <div class="sim-question">Quando pretende realizar a compra?</div>
-          <div class="sim-options" data-field="momento_compra">
-            <button type="button" class="sim-option" data-value="O mais rápido possível">O mais rápido possível</button>
-            <button type="button" class="sim-option" data-value="Nos próximos 30 dias">Nos próximos 30 dias</button>
-            <button type="button" class="sim-option" data-value="Nos próximos três meses">Nos próximos três meses</button>
-            <button type="button" class="sim-option" data-value="Ainda estou pesquisando">Ainda estou pesquisando</button>
-          </div>
-        </div>
-
-        <!-- ETAPA 5 — momento (para quem não escolheu PIX, que já respondeu isso na etapa 4) -->
-        <div class="sim-step" data-step="momento" hidden>
-          <div class="sim-step-label">Etapa 5 de 6</div>
-          <div class="sim-question">Quando você pretende ter a sua Duact?</div>
-          <div class="sim-options" data-field="momento_compra">
-            <button type="button" class="sim-option" data-value="O mais rápido possível">O mais rápido possível</button>
-            <button type="button" class="sim-option" data-value="Nos próximos 30 dias">Nos próximos 30 dias</button>
-            <button type="button" class="sim-option" data-value="Nos próximos três meses">Nos próximos três meses</button>
-            <button type="button" class="sim-option" data-value="Ainda estou pesquisando">Ainda estou pesquisando</button>
-          </div>
-        </div>
-
-        <!-- ETAPA 6 — contato -->
-        <div class="sim-step" data-step="contato" hidden>
-          <div class="sim-step-label">Etapa 6 de 6</div>
-          <div class="sim-question">Para onde enviamos o seu resultado?</div>
-
-          <div class="field">
-            <label for="f-nome">Nome</label>
-            <input type="text" id="f-nome" name="nome" autocomplete="name">
-            <div class="field-error" id="err-nome">Digite seu nome para continuar.</div>
-          </div>
-          <div class="field">
-            <label for="f-whatsapp">WhatsApp</label>
-            <input type="tel" id="f-whatsapp" name="whatsapp" placeholder="(00) 00000-0000" autocomplete="tel">
-            <div class="field-error" id="err-whatsapp">Digite um WhatsApp válido com DDD.</div>
-          </div>
-          <div class="field">
-            <label for="f-cidade">Cidade</label>
-            <input type="text" id="f-cidade" name="cidade" autocomplete="address-level2">
-            <div class="field-error" id="err-cidade">Digite sua cidade.</div>
+        <form id="sim-form" novalidate>
+          <div class="sim-step" data-step="rotina">
+            <div class="sim-step-label">Sua rotina</div>
+            <div class="sim-question">Quanto você costuma gastar por dia para ir, voltar e cumprir os compromissos da sua rotina?</div>
+            <p class="sim-question-help">Considere ônibus, aplicativo e outros deslocamentos que saem do seu bolso.</p>
+            <div class="sim-options" data-field="gasto_diario">
+              <button type="button" class="sim-option" data-value="Até R$ 10"><span>Até R$ 10</span><small>Gasto mais controlado</small></button>
+              <button type="button" class="sim-option" data-value="De R$ 11 a R$ 20"><span>De R$ 11 a R$ 20</span><small>Gasto recorrente moderado</small></button>
+              <button type="button" class="sim-option" data-value="De R$ 21 a R$ 30"><span>De R$ 21 a R$ 30</span><small>Valor relevante no mês</small></button>
+              <button type="button" class="sim-option" data-value="Mais de R$ 30"><span>Mais de R$ 30</span><small>Alto custo de mobilidade</small></button>
+              <button type="button" class="sim-option" data-value="Não sei calcular"><span>Não sei calcular</span><small>Quero entender melhor</small></button>
+            </div>
           </div>
 
-          <label class="consent-row">
-            <input type="checkbox" id="f-consent">
-            <span>Autorizo o contato do vendedor para receber informações sobre os modelos e formas de pagamento. <a href="#politica-privacidade">Política de Privacidade</a>.</span>
-          </label>
-          <div class="field-error" id="err-consent">É necessário autorizar o contato para ver o seu resultado.</div>
-
-          <div class="sim-cta-row">
-            <button type="submit" class="btn btn-primary btn-block" data-event="complete_simulation">Ver meu resultado</button>
+          <div class="sim-step" data-step="modelo" hidden>
+            <div class="sim-step-label">Modelo</div>
+            <div class="sim-question">Qual modelo você gostaria de conhecer?</div>
+            <p class="sim-question-help">Você também pode comparar os dois antes de decidir.</p>
+            <div class="sim-options" data-field="modelo">
+              <button type="button" class="sim-option" data-value="Duact Maxus"><span>Duact Maxus</span><small>R$ 8.990 à vista</small></button>
+              <button type="button" class="sim-option" data-value="Duact X13"><span>Duact X13</span><small>R$ 9.490 à vista</small></button>
+              <button type="button" class="sim-option" data-value="Quero comparar os dois"><span>Quero comparar os dois</span><small>Receber orientação</small></button>
+              <button type="button" class="sim-option" data-value="Ainda não sei qual escolher"><span>Ainda não sei qual escolher</span><small>Quero entender as diferenças</small></button>
+            </div>
           </div>
-        </div>
 
-        <div class="sim-nav">
-          <button type="button" class="sim-back" id="sim-back">← Voltar</button>
-        </div>
-      </form>
+          <div class="sim-step" data-step="forma" hidden>
+            <div class="sim-step-label">Forma de compra</div>
+            <div class="sim-question">Qual forma de compra parece mais interessante para você?</div>
+            <div class="sim-options" data-field="forma_pagamento">
+              <button type="button" class="sim-option" data-value="cartao" data-event="select_card_payment"><span>Cartão em até 21 vezes sem juros</span><small>Usando limite disponível</small></button>
+              <button type="button" class="sim-option" data-value="pix" data-event="select_cash_payment"><span>PIX ou dinheiro</span><small>Melhor valor de compra</small></button>
+              <button type="button" class="sim-option" data-value="financiamento" data-event="select_financing"><span>Financiamento bancário</span><small>Sujeito à análise do banco</small></button>
+              <button type="button" class="sim-option" data-value="comparar"><span>Quero comparar todas as opções</span><small>Entender antes de escolher</small></button>
+            </div>
+          </div>
 
-      <!-- RESULTADOS -->
-      <div id="sim-results">
-        <div class="sim-result" data-result="cartao">
-          <h3>O cartão pode ser um caminho direto para ter a sua Duact</h3>
-          <p>Os modelos podem ser comprados em até 21 vezes sem juros no cartão. O vendedor poderá confirmar o modelo, a disponibilidade e orientar você sobre os próximos passos.</p>
-          <a class="btn btn-primary btn-block wa-result-link" data-event="click_whatsapp_result">Confirmar com o vendedor</a>
-        </div>
-        <div class="sim-result" data-result="pix">
-          <h3>A condição à vista pode ser a opção mais econômica</h3>
-          <p>A Maxus e a X13 possuem valores especiais para pagamento no PIX ou dinheiro. Fale com o vendedor para confirmar a disponibilidade e receber as orientações para concluir a compra.</p>
-          <a class="btn btn-primary btn-block wa-result-link" data-event="click_whatsapp_result">Consultar condição à vista</a>
-        </div>
-        <div class="sim-result" data-result="financiamento">
-          <h3>Existe uma possibilidade de financiamento para você conhecer</h3>
-          <p>O financiamento é calculado a partir do preço à vista do modelo escolhido. A entrada, os juros, as parcelas e a aprovação dependem da análise realizada pelo banco. O vendedor poderá continuar a simulação com você.</p>
-          <a class="btn btn-primary btn-block wa-result-link" data-event="click_whatsapp_result">Continuar minha simulação</a>
-        </div>
-        <div class="sim-result" data-result="pesquisando">
-          <h3>Você não precisa decidir sem entender as opções</h3>
-          <p>O vendedor pode explicar as diferenças entre os modelos e apresentar as formas de compra disponíveis. Assim, você conhece as possibilidades antes de tomar uma decisão.</p>
-          <a class="btn btn-primary btn-block wa-result-link" data-event="click_whatsapp_result">Tirar minhas dúvidas</a>
-        </div>
-        <p class="redirect-note">Você será direcionado ao WhatsApp do vendedor para continuar. O WhatsApp será aberto em alguns segundos.</p>
-        <div class="hero-ctas" style="margin-top:14px;">
-          <a class="btn btn-outline dark wa-result-link" style="border-color:rgba(0,0,0,.2)">Falar com o vendedor agora</a>
-          <button type="button" class="btn btn-outline dark" style="border-color:rgba(0,0,0,.2)" id="sim-stay">Continuar nesta página</button>
+          <div class="sim-step" data-step="cond-cartao" hidden>
+            <div class="sim-step-label">Condição no cartão</div>
+            <div class="sim-question">Você possui cartão com limite disponível para analisar a compra?</div>
+            <div class="sim-options" data-field="condicional">
+              <button type="button" class="sim-option" data-value="Sim"><span>Sim</span><small>Tenho limite para avaliar</small></button>
+              <button type="button" class="sim-option" data-value="Parcialmente"><span>Parcialmente</span><small>Tenho parte do limite</small></button>
+              <button type="button" class="sim-option" data-value="Ainda não sei"><span>Ainda não sei</span><small>Preciso verificar</small></button>
+              <button type="button" class="sim-option" data-value="Quero conversar com o vendedor"><span>Quero conversar com o vendedor</span><small>Prefiro receber orientação</small></button>
+            </div>
+          </div>
+
+          <div class="sim-step" data-step="cond-financiamento" hidden>
+            <div class="sim-step-label">Entrada para financiamento</div>
+            <div class="sim-question">Você possui algum valor disponível para dar de entrada?</div>
+            <p class="sim-question-help">A entrada pode ajudar na composição da proposta, mas a decisão final é sempre do banco.</p>
+            <div class="sim-options" data-field="entrada">
+              <button type="button" class="sim-option" data-value="Ainda não"><span>Ainda não</span><small>Quero saber se há possibilidades</small></button>
+              <button type="button" class="sim-option" data-value="Até R$ 1.000"><span>Até R$ 1.000</span><small>Entrada inicial</small></button>
+              <button type="button" class="sim-option" data-value="De R$ 1.001 a R$ 3.000"><span>De R$ 1.001 a R$ 3.000</span><small>Entrada intermediária</small></button>
+              <button type="button" class="sim-option" data-value="Mais de R$ 3.000"><span>Mais de R$ 3.000</span><small>Entrada mais robusta</small></button>
+              <button type="button" class="sim-option" data-value="Prefiro conversar sobre isso"><span>Prefiro conversar sobre isso</span><small>Manter a informação reservada</small></button>
+            </div>
+          </div>
+
+          <div class="sim-step" data-step="cond-pix" hidden>
+            <div class="sim-step-label">Momento da compra</div>
+            <div class="sim-question">Quando pretende realizar a compra?</div>
+            <div class="sim-options" data-field="momento_compra">
+              <button type="button" class="sim-option" data-value="O mais rápido possível"><span>O mais rápido possível</span><small>Quero avançar agora</small></button>
+              <button type="button" class="sim-option" data-value="Nos próximos 30 dias"><span>Nos próximos 30 dias</span><small>Decisão próxima</small></button>
+              <button type="button" class="sim-option" data-value="Nos próximos três meses"><span>Nos próximos três meses</span><small>Estou me organizando</small></button>
+              <button type="button" class="sim-option" data-value="Ainda estou pesquisando"><span>Ainda estou pesquisando</span><small>Quero conhecer primeiro</small></button>
+            </div>
+          </div>
+
+          <div class="sim-step" data-step="momento" hidden>
+            <div class="sim-step-label">Momento da compra</div>
+            <div class="sim-question">Quando você pretende ter a sua Duact?</div>
+            <div class="sim-options" data-field="momento_compra">
+              <button type="button" class="sim-option" data-value="O mais rápido possível"><span>O mais rápido possível</span><small>Quero avançar agora</small></button>
+              <button type="button" class="sim-option" data-value="Nos próximos 30 dias"><span>Nos próximos 30 dias</span><small>Decisão próxima</small></button>
+              <button type="button" class="sim-option" data-value="Nos próximos três meses"><span>Nos próximos três meses</span><small>Estou me organizando</small></button>
+              <button type="button" class="sim-option" data-value="Ainda estou pesquisando"><span>Ainda estou pesquisando</span><small>Quero conhecer primeiro</small></button>
+            </div>
+          </div>
+
+          <div class="sim-nav">
+            <button type="button" class="sim-back" id="sim-back">← Voltar</button>
+          </div>
+        </form>
+
+        <div id="sim-results" aria-live="polite">
+          <div class="result-dashboard-head">
+            <div class="diagnostic-head">
+              <span class="diagnostic-kicker" id="diag-kicker">Seu diagnóstico inicial</span>
+              <h3 id="diag-title">Analisando suas respostas...</h3>
+              <p id="diag-summary"></p>
+            </div>
+            <div class="result-gauge" id="diag-gauge" style="--score:50">
+              <div class="result-gauge-inner">
+                <strong id="diag-score">50</strong>
+                <span>potencial para avançar</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-metrics">
+            <div class="dashboard-card">
+              <span class="dashboard-icon">↗</span>
+              <span class="diagnostic-label">Leitura do cenário</span>
+              <strong id="diag-profile"></strong>
+              <p id="diag-profile-text"></p>
+            </div>
+            <div class="dashboard-card">
+              <span class="dashboard-icon">◎</span>
+              <span class="diagnostic-label">Caminho indicado</span>
+              <strong id="diag-path"></strong>
+              <p id="diag-path-text"></p>
+            </div>
+            <div class="dashboard-card">
+              <span class="dashboard-icon">◷</span>
+              <span class="diagnostic-label">Seu momento</span>
+              <strong id="diag-timing"></strong>
+              <p id="diag-timing-text"></p>
+            </div>
+            <div class="dashboard-card">
+              <span class="dashboard-icon">R$</span>
+              <span class="diagnostic-label">Gasto estimado</span>
+              <strong id="diag-monthly"></strong>
+              <p id="diag-monthly-text"></p>
+            </div>
+          </div>
+
+          <div class="hope-callout">
+            <span>Um sinal positivo no seu cenário</span>
+            <strong id="diag-hope-title"></strong>
+            <p id="diag-hope-text"></p>
+          </div>
+
+          <div class="answer-breakdown">
+            <div class="answer-breakdown-head">
+              <h4>Como cada resposta influenciou sua leitura</h4>
+              <p>O diagnóstico muda de acordo com suas escolhas.</p>
+            </div>
+            <div class="answer-insights" id="diag-answer-insights"></div>
+          </div>
+
+          <ul class="diagnostic-points" id="diag-points"></ul>
+
+          <div class="diagnostic-next">
+            <strong>Seu resultado sugere um caminho para tentar, não uma aprovação garantida.</strong>
+            A decisão sobre financiamento, juros, entrada e parcelas é do banco. Ainda assim, suas respostas podem revelar elementos positivos que justificam uma análise real com o vendedor.
+          </div>
+          <a class="btn btn-primary btn-block wa-result-link" id="diag-wa-cta" href="#" data-event="click_whatsapp_result">Falar com o vendedor sobre este resultado</a>
+          <p class="redirect-note">Ao clicar, o WhatsApp será aberto no número <strong>(51) 98958-0303</strong> com uma mensagem personalizada para o seu cenário.</p>
+          <div class="hero-ctas" style="margin-top:14px;">
+            <button type="button" class="btn btn-outline dark" style="border-color:rgba(0,0,0,.2)" id="sim-restart">Refazer simulação</button>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -761,7 +936,7 @@
             <div class="price-row"><span class="label">Financiamento</span><span class="value">Sobre R$ 8.990 + juros do banco</span></div>
           </div>
           <div class="modelo-ctas">
-            <a href="#simulador" class="btn btn-primary" data-event="select_maxus">Quero conhecer a Maxus</a>
+            <a href="#" class="btn btn-primary wa-direct" data-wa-scenario="model_maxus" data-event="click_whatsapp_maxus">Quero conhecer a Maxus</a>
             <a href="#produtos" class="btn-ghost" data-event="view_model_price">Ver informações do modelo</a>
           </div>
         </div>
@@ -779,7 +954,7 @@
             <div class="price-row"><span class="label">Financiamento</span><span class="value">Sobre R$ 9.490 + juros do banco</span></div>
           </div>
           <div class="modelo-ctas">
-            <a href="#simulador" class="btn btn-primary" data-event="select_x13">Quero conhecer a X13</a>
+            <a href="#" class="btn btn-primary wa-direct" data-wa-scenario="model_x13" data-event="click_whatsapp_x13">Quero conhecer a X13</a>
             <a href="#produtos" class="btn-ghost" data-event="view_model_price">Ver informações do modelo</a>
           </div>
         </div>
@@ -897,8 +1072,8 @@
     <h2 class="section-title">Ter a sua Duact pode estar mais perto do que você imagina</h2>
     <p>Você não precisa escolher tudo agora. Comece entendendo qual forma de compra pode fazer sentido e receba as informações diretamente com o vendedor.</p>
     <div class="cta-final-btns">
-      <a href="#simulador" class="btn btn-primary" data-event="click_primary_cta">Descobrir minha melhor opção</a>
-      <a href="#simulador" class="btn btn-outline" data-event="click_whatsapp_model">Falar com o vendedor</a>
+      <a href="#simulador" class="btn btn-primary" data-event="click_primary_cta">Simulação grátis</a>
+      <a href="#" class="btn btn-outline wa-direct" data-wa-scenario="final_cta" data-event="click_whatsapp_final">Falar com o vendedor</a>
     </div>
   </div>
 </section>
@@ -913,7 +1088,7 @@
     <div class="map-block">
       <div class="map-embed">
         <iframe
-          src="https://www.google.com/maps?q=-29.9212194,-51.094398&hl=pt-BR&z=16&output=embed"
+          src="https://www.google.com/maps?cid=12424121033910783554&hl=pt-BR&z=18&output=embed"
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           title="Localização da Dillen Store no Google Maps">
@@ -923,8 +1098,8 @@
         <h3>Dillen Store</h3>
         <p>iPhone, MacBook, iPad, Apple Watch e Xiaomi — e agora, parceira oficial Duact.</p>
         <a class="btn btn-primary btn-block" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/place/Dillen+Store+%7C+iPhone,+Macbook,+iPad,+Apple+Watch+e+Xiaomi/@-29.9214034,-51.0980673,16.5z/data=!4m10!1m2!2m1!1sDillen+Store!3m6!1s0x9519837d317a1c51:0xac6b584128b60e42!8m2!3d-29.9212194!4d-51.094398!15sCgxEaWxsZW4gU3RvcmVaDiIMZGlsbGVuIHN0b3JlkgEQY2VsbF9waG9uZV9zdG9yZeABAA!16s%2Fg%2F11wv1bhg76?hl=pt-BR&entry=ttu"
-           data-event="click_whatsapp_model">Ver no Google Maps</a>
+           href="https://www.google.com/maps/place/Dillen+Store+%7C+iPhone,+Macbook,+iPad,+Apple+Watch+e+Xiaomi/@-29.9214034,-51.0980673,16.5z/data=!4m10!1m2!2m1!1sDillen+Store!3m6!1s0x9519837d317a1c51:0xac6b584128b60e42!8m2!3d-29.9212194!4d-51.094398!15sCgxEaWxsZW4gU3RvcmVaDiIMZGlsbGVuIHN0b3JlkgEQY2VsbF9waG9uZV9zdG9yZeABAA!16s%2Fg%2F11wv1bhg76?hl=pt-BR&amp;entry=ttu&amp;g_ep=EgoyMDI2MDcyMC4wIKXMDSoASAFQAw%3D%3D"
+           data-event="click_maps">Ver no Google Maps</a>
       </div>
     </div>
   </div>
@@ -943,7 +1118,7 @@
       <h5>Contato</h5>
       <ul>
         <li><a href="mailto:contato.dillenstore@gmail.com">contato.dillenstore@gmail.com</a></li>
-        <li><a href="https://wa.me/5551989580303" target="_blank" rel="noopener">WhatsApp (51) 98958-0303</a></li>
+        <li><a href="#" class="wa-direct" data-wa-scenario="footer" data-event="click_whatsapp_footer">WhatsApp (51) 98958-0303</a></li>
       </ul>
     </div>
     <div>
@@ -962,17 +1137,12 @@
 
 <script>
 (function(){
-  // ---------- Utilidades ----------
   window.dataLayer = window.dataLayer || [];
   function track(eventName, extra){
     if(!eventName) return;
-    window.dataLayer.push(Object.assign({ event: eventName }, extra || {}));
+    window.dataLayer.push(Object.assign({ event:eventName }, extra || {}));
   }
-  document.querySelectorAll('[data-event]').forEach(function(el){
-    el.addEventListener('click', function(){ track(el.getAttribute('data-event')); });
-  });
 
-  // ---------- UTM + lead id (em memória, sem localStorage) ----------
   var params = new URLSearchParams(window.location.search);
   var utm = {
     utm_source: params.get('utm_source') || '',
@@ -982,214 +1152,426 @@
     utm_term: params.get('utm_term') || ''
   };
   var leadId = 'lead_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,8);
-  var WHATSAPP_NUMBER = '5551989580303'; // (51) 98958-0303 — Dillen Store
-
+  var WHATSAPP_NUMBER = '5551989580303'; // Brasil 55 + número informado 51 98958-0303
   track('view_landing_page', utm);
 
-  // ---------- Simulador ----------
-  var answers = { gasto_diario:'', modelo:'', forma_pagamento:'', condicional:'', entrada:'', momento_compra:'', nome:'', whatsapp:'', cidade:'' };
+  function waUrl(message){
+    return 'https://api.whatsapp.com/send/?phone=' + WHATSAPP_NUMBER + '&text=' + encodeURIComponent(message) + '&type=phone_number&app_absent=0';
+  }
 
-  // fluxo de etapas (o passo "cond-*" depende da forma escolhida; "momento" é pulado quando a forma é pix,
-  // pois a etapa condicional do pix já pergunta o momento da compra, evitando repetir a pergunta)
+  function sourceLines(){
+    return [
+      'Origem: ' + (utm.utm_source || 'acesso direto'),
+      'Campanha: ' + (utm.utm_campaign || '-'),
+      'Conteúdo: ' + (utm.utm_content || '-'),
+      'ID da simulação: ' + leadId
+    ];
+  }
+
+  function bindWhatsAppLink(link, message, eventName, extra){
+    var url = waUrl(message);
+    link.setAttribute('href', url);
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+    link.addEventListener('click', function(){
+      track(eventName || 'click_whatsapp', extra || {});
+    });
+  }
+
+  var directMessages = {
+    header:['Olá! Vim pelo botão do topo da página da Duact.','Quero entender os modelos e qual forma de compra pode fazer sentido para mim.'],
+    header_mobile:['Olá! Estou vendo a página da Duact pelo celular.','Quero falar com o vendedor sobre modelos, valores e formas de compra.'],
+    floating:['Olá! Estou navegando na página da Duact.','Quero tirar algumas dúvidas diretamente com o vendedor.'],
+    hero_direct:['Olá! Vi que posso comprar a Duact em até 21x sem juros, à vista ou por financiamento.','Quero entender qual dessas opções pode funcionar para mim.'],
+    simulator_direct:['Olá! Cheguei à simulação da Duact, mas prefiro explicar meu cenário diretamente.','Pode me orientar sobre as possibilidades de compra?'],
+    model_maxus:['Olá! Tenho interesse na Duact Maxus.','Quero confirmar a disponibilidade e entender as opções de R$ 10.990 em até 21x sem juros, R$ 8.990 à vista ou financiamento.'],
+    model_x13:['Olá! Tenho interesse na Duact X13.','Quero confirmar a disponibilidade e entender as opções de R$ 11.300 em até 21x sem juros, R$ 9.490 à vista ou financiamento.'],
+    final_cta:['Olá! Cheguei ao final da página da Duact.','Quero descobrir qual caminho de compra pode fazer mais sentido para mim.'],
+    footer:['Olá! Vim pelo contato da página da Duact.','Quero informações sobre os modelos e as formas de pagamento.']
+  };
+
+  document.querySelectorAll('.wa-direct').forEach(function(link){
+    var scenario = link.getAttribute('data-wa-scenario') || 'footer';
+    var body = (directMessages[scenario] || directMessages.footer).concat([''], sourceLines()).join('\n');
+    bindWhatsAppLink(link, body, link.getAttribute('data-event') || 'click_whatsapp_direct', {scenario:scenario});
+  });
+
+  document.querySelectorAll('[data-event]:not(.wa-direct):not(.sim-option):not(.wa-result-link)').forEach(function(el){
+    el.addEventListener('click', function(){ track(el.getAttribute('data-event')); });
+  });
+
+  var answers = {gasto_diario:'',modelo:'',forma_pagamento:'',condicional:'',entrada:'',momento_compra:''};
   function buildFlow(){
-    var flow = ['rotina','modelo','forma'];
-    if(answers.forma_pagamento === 'cartao') flow.push('cond-cartao');
-    else if(answers.forma_pagamento === 'financiamento') flow.push('cond-financiamento');
-    else if(answers.forma_pagamento === 'pix') flow.push('cond-pix');
-    if(answers.forma_pagamento !== 'pix') flow.push('momento');
-    flow.push('contato');
+    var flow=['rotina','modelo','forma'];
+    if(answers.forma_pagamento==='cartao') flow.push('cond-cartao');
+    else if(answers.forma_pagamento==='financiamento') flow.push('cond-financiamento');
+    else if(answers.forma_pagamento==='pix') flow.push('cond-pix');
+    if(answers.forma_pagamento!=='pix') flow.push('momento');
     return flow;
   }
 
-  var currentIndex = 0;
-  var steps = document.querySelectorAll('.sim-step');
-  var progressFill = document.getElementById('sim-progress');
-  var backBtn = document.getElementById('sim-back');
-  var form = document.getElementById('sim-form');
-  var shell = document.getElementById('sim-shell');
-  var resultsBox = document.getElementById('sim-results');
+  var steps=document.querySelectorAll('.sim-step');
+  var progressFill=document.getElementById('sim-progress');
+  var progressLabel=document.getElementById('sim-progress-label');
+  var progressTitle=document.getElementById('sim-progress-title');
+  var progressPercent=document.getElementById('sim-progress-percent');
+  var backBtn=document.getElementById('sim-back');
+  var form=document.getElementById('sim-form');
+  var shell=document.getElementById('sim-shell');
+  var resultsBox=document.getElementById('sim-results');
+  var flowState=['rotina'];
+  var stepTitles={rotina:'Sua rotina de mobilidade',modelo:'Modelo de interesse',forma:'Forma de compra','cond-cartao':'Condição no cartão','cond-financiamento':'Entrada para financiamento','cond-pix':'Momento da compra',momento:'Momento da compra'};
 
-  function getStepEl(name){
-    return document.querySelector('.sim-step[data-step="'+name+'"]');
-  }
-
+  function getStepEl(name){return document.querySelector('.sim-step[data-step="'+name+'"]');}
   function showStep(name){
-    steps.forEach(function(s){ s.hidden = true; });
-    var el = getStepEl(name);
-    if(el) el.hidden = false;
-    var flow = buildFlow();
-    var idx = flow.indexOf(name);
-    var pct = Math.round(((idx+1) / flow.length) * 100);
-    progressFill.style.width = pct + '%';
-    backBtn.disabled = idx <= 0;
-    track('simulation_step_completed', { step: name });
+    steps.forEach(function(step){step.hidden=true;});
+    var el=getStepEl(name); if(el) el.hidden=false;
+    var flow=buildFlow();
+    var idx=flow.indexOf(name);
+    var total=answers.forma_pagamento?flow.length:5;
+    var percent=Math.round(((idx+1)/total)*100);
+    progressFill.style.width=percent+'%';
+    progressLabel.textContent='Etapa '+(idx+1)+' de '+total;
+    progressTitle.textContent=stepTitles[name] || 'Simulação';
+    progressPercent.textContent=percent+'%';
+    backBtn.disabled=idx<=0;
+    track('simulation_step_viewed',{step:name});
   }
-
-  var flowState = ['rotina'];
-
   function goNext(){
-    var flow = buildFlow();
-    var last = flowState[flowState.length-1];
-    var idx = flow.indexOf(last);
-    var next = flow[idx+1];
-    if(next){
-      flowState.push(next);
-      showStep(next);
-    }
+    var flow=buildFlow();
+    var last=flowState[flowState.length-1];
+    var idx=flow.indexOf(last);
+    var next=flow[idx+1];
+    if(next){flowState.push(next);showStep(next);}else{track('complete_simulation',{anonymous:true});showDiagnostic();}
   }
-  function goBack(){
-    if(flowState.length > 1){
-      flowState.pop();
-      showStep(flowState[flowState.length-1]);
-    }
-  }
+  function goBack(){if(flowState.length>1){flowState.pop();showStep(flowState[flowState.length-1]);}}
+  backBtn.addEventListener('click',goBack);
 
-  backBtn.addEventListener('click', goBack);
-
-  // seleção das opções
   document.querySelectorAll('.sim-options').forEach(function(group){
-    var field = group.getAttribute('data-field');
-    group.querySelectorAll('.sim-option').forEach(function(opt){
-      opt.addEventListener('click', function(){
-        group.querySelectorAll('.sim-option').forEach(function(o){ o.classList.remove('selected'); });
-        opt.classList.add('selected');
-        answers[field] = opt.getAttribute('data-value');
-        var evt = opt.getAttribute('data-event');
-        if(evt) track(evt);
-        setTimeout(goNext, 180);
+    var field=group.getAttribute('data-field');
+    group.querySelectorAll('.sim-option').forEach(function(option){
+      option.addEventListener('click',function(){
+        group.querySelectorAll('.sim-option').forEach(function(item){item.classList.remove('selected');});
+        option.classList.add('selected');
+        answers[field]=option.getAttribute('data-value');
+        if(field==='forma_pagamento'){answers.condicional='';answers.entrada='';answers.momento_compra='';}
+        var evt=option.getAttribute('data-event'); if(evt) track(evt);
+        setTimeout(goNext,160);
       });
     });
   });
-
   track('start_simulation');
   showStep('rotina');
 
-  // ---------- Envio / validação da etapa de contato ----------
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var nome = document.getElementById('f-nome').value.trim();
-    var whatsapp = document.getElementById('f-whatsapp').value.trim();
-    var cidade = document.getElementById('f-cidade').value.trim();
-    var consent = document.getElementById('f-consent').checked;
-
-    var valid = true;
-    toggleError('err-nome', nome.length < 2); if(nome.length < 2) valid = false;
-    var phoneDigits = whatsapp.replace(/\D/g,'');
-    toggleError('err-whatsapp', phoneDigits.length < 10); if(phoneDigits.length < 10) valid = false;
-    toggleError('err-cidade', cidade.length < 2); if(cidade.length < 2) valid = false;
-    toggleError('err-consent', !consent); if(!consent) valid = false;
-
-    if(!valid){ track('form_error'); return; }
-
-    answers.nome = nome;
-    answers.whatsapp = whatsapp;
-    answers.cidade = cidade;
-
-    saveLead();
-    showResult();
-  });
-
-  function toggleError(id, show){
-    var el = document.getElementById(id);
-    if(el) el.style.display = show ? 'block' : 'none';
+  function modelData(){
+    if(answers.modelo==='Duact Maxus') return {name:'Duact Maxus',cash:'R$ 8.990',card:'R$ 10.990 em até 21x sem juros',financeBase:'R$ 8.990'};
+    if(answers.modelo==='Duact X13') return {name:'Duact X13',cash:'R$ 9.490',card:'R$ 11.300 em até 21x sem juros',financeBase:'R$ 9.490'};
+    return {name:answers.modelo||'os modelos Duact',cash:'os valores especiais à vista',card:'as opções em até 21x sem juros',financeBase:'o preço à vista do modelo'};
+  }
+  function isSoon(){return answers.momento_compra==='O mais rápido possível'||answers.momento_compra==='Nos próximos 30 dias';}
+  function timingData(){
+    var map={
+      'O mais rápido possível':{label:'Decisão imediata',text:'Você já está em um momento de ação. Confirmar as condições agora evita perder tempo.'},
+      'Nos próximos 30 dias':{label:'Decisão próxima',text:'Seu horizonte de compra permite iniciar a análise e organizar os próximos passos.'},
+      'Nos próximos três meses':{label:'Fase de planejamento',text:'Você tem tempo para comparar, organizar entrada e conhecer as condições.'},
+      'Ainda estou pesquisando':{label:'Pesquisa ativa',text:'Você ainda não precisa decidir, mas já pode verificar se existe um caminho viável.'}
+    };
+    return map[answers.momento_compra]||{label:'Momento a definir',text:'Converse com o vendedor para organizar seu próximo passo.'};
+  }
+  function monthlyData(){
+    var map={
+      'Até R$ 10':{value:'até R$ 220/mês',text:'Estimativa considerando até R$ 10 por 22 dias.'},
+      'De R$ 11 a R$ 20':{value:'cerca de R$ 341/mês',text:'Estimativa usando o ponto médio da faixa em 22 dias.'},
+      'De R$ 21 a R$ 30':{value:'cerca de R$ 561/mês',text:'Estimativa usando o ponto médio da faixa em 22 dias.'},
+      'Mais de R$ 30':{value:'mais de R$ 660/mês',text:'Seu custo recorrente já representa um valor expressivo.'},
+      'Não sei calcular':{value:'valor a descobrir',text:'Mapear esse gasto pode revelar quanto sua mobilidade já pesa no mês.'}
+    };
+    return map[answers.gasto_diario]||{value:'não informado',text:'O gasto mensal pode ser comparado com as formas de compra.'};
   }
 
-  function saveLead(){
-    track('lead_saved', Object.assign({ lead_id: leadId }, answers, utm));
-    // Observação: nenhum dado é salvo em localStorage/sessionStorage.
-    // Em produção, este é o ponto de integração com CRM/planilha/banco de dados.
+  function scenarioScore(){
+    var score=42;
+    var pay=answers.forma_pagamento;
+    if(pay==='cartao'){
+      score += answers.condicional==='Sim'?35:answers.condicional==='Parcialmente'?23:answers.condicional==='Ainda não sei'?13:15;
+    }else if(pay==='pix') score+=36;
+    else if(pay==='financiamento'){
+      score += answers.entrada==='Mais de R$ 3.000'?32:answers.entrada==='De R$ 1.001 a R$ 3.000'?25:answers.entrada==='Até R$ 1.000'?18:answers.entrada==='Ainda não'?10:14;
+    }else if(pay==='comparar') score+=17;
+    score += answers.momento_compra==='O mais rápido possível'?12:answers.momento_compra==='Nos próximos 30 dias'?9:answers.momento_compra==='Nos próximos três meses'?4:0;
+    score += answers.gasto_diario==='Mais de R$ 30'?5:answers.gasto_diario==='De R$ 21 a R$ 30'?4:answers.gasto_diario==='De R$ 11 a R$ 20'?2:1;
+    if(answers.modelo==='Duact Maxus'||answers.modelo==='Duact X13') score+=2;
+    return Math.max(45,Math.min(94,score));
   }
 
-  // ---------- Resultado ----------
-  function resolveResultKey(){
-    if(answers.momento_compra === 'Ainda estou pesquisando' || answers.forma_pagamento === 'comparar'){
-      return 'pesquisando';
+  function answerInsights(){
+    var gasto={
+      'Até R$ 10':['Gasto diário mais baixo','A compra precisa ser avaliada mais pela autonomia e pela praticidade do que por uma economia imediata.'],
+      'De R$ 11 a R$ 20':['Gasto recorrente relevante','Esse valor já merece ser comparado com uma forma própria de mobilidade.'],
+      'De R$ 21 a R$ 30':['Custo mensal importante','Sua rotina já movimenta um valor que pode justificar uma análise mais séria das opções.'],
+      'Mais de R$ 30':['Forte dor financeira de mobilidade','O custo recorrente cria um motivo concreto para procurar uma alternativa própria.'],
+      'Não sei calcular':['Oportunidade de descoberta','Entender o gasto atual pode revelar uma possibilidade que hoje está escondida.']
+    };
+    var modelo={
+      'Duact Maxus':['Interesse definido na Maxus','Ter um modelo escolhido deixa a conversa com o vendedor mais objetiva.'],
+      'Duact X13':['Interesse definido na X13','Ter um modelo escolhido permite avaliar valores e condições com mais precisão.'],
+      'Quero comparar os dois':['Comparação antes da decisão','Você pode receber uma orientação prática sobre qual modelo atende melhor à sua rotina.'],
+      'Ainda não sei qual escolher':['Escolha ainda aberta','O vendedor pode ajudar a eliminar dúvidas antes de qualquer decisão financeira.']
+    };
+    var forma={
+      cartao:['Cartão como caminho principal','A opção em até 21x sem juros pode simplificar a compra quando existe limite disponível.'],
+      pix:['Pagamento à vista','Essa escolha oferece o menor valor comercial entre as opções atuais.'],
+      financiamento:['Financiamento bancário','Há uma possibilidade real de análise usando o preço à vista como referência.'],
+      comparar:['Mais de um caminho disponível','Comparar cartão, à vista e financiamento aumenta a chance de encontrar uma alternativa compatível.']
+    };
+    var complementar;
+    if(answers.forma_pagamento==='cartao'){
+      complementar={
+        'Sim':['Limite disponível informado','Esse é um sinal bastante positivo para avançar na opção em 21x sem juros.'],
+        'Parcialmente':['Parte do limite disponível','Você já possui uma parte do caminho e pode verificar combinações ou alternativas.'],
+        'Ainda não sei':['Limite ainda não confirmado','Uma simples consulta ao cartão pode esclarecer se essa opção está mais próxima do que parece.'],
+        'Quero conversar com o vendedor':['Busca por orientação','Você prefere entender as possibilidades antes de expor detalhes financeiros.']
+      }[answers.condicional];
+    }else if(answers.forma_pagamento==='financiamento'){
+      complementar={
+        'Ainda não':['Sem entrada no momento','Isso não encerra a possibilidade: o banco avalia um conjunto de informações, e vale verificar antes de desistir.'],
+        'Até R$ 1.000':['Entrada inicial disponível','Mesmo uma entrada menor pode ser um ponto de partida para uma proposta personalizada.'],
+        'De R$ 1.001 a R$ 3.000':['Entrada intermediária disponível','Você já possui um elemento que pode fortalecer a composição da proposta bancária.'],
+        'Mais de R$ 3.000':['Entrada mais robusta','Esse é um sinal positivo para reduzir o valor financiado e buscar uma análise.'],
+        'Prefiro conversar sobre isso':['Informação reservada','O cenário ainda pode ser avaliado individualmente pelo vendedor, sem exposição na página.']
+      }[answers.entrada];
     }
-    if(answers.forma_pagamento === 'cartao') return 'cartao';
-    if(answers.forma_pagamento === 'pix') return 'pix';
-    if(answers.forma_pagamento === 'financiamento') return 'financiamento';
-    return 'pesquisando';
+    var momento={
+      'O mais rápido possível':['Pronto para agir','Seu momento favorece confirmar condições e disponibilidade sem adiar.'],
+      'Nos próximos 30 dias':['Compra em horizonte próximo','Há tempo suficiente para análise, comparação e organização.'],
+      'Nos próximos três meses':['Planejamento consciente','Você pode preparar entrada, limite ou documentação antes de avançar.'],
+      'Ainda estou pesquisando':['Pesquisa sem pressão','Conhecer as condições agora pode ajudar você a decidir com mais segurança depois.']
+    };
+    var list=[gasto[answers.gasto_diario],modelo[answers.modelo],forma[answers.forma_pagamento]];
+    if(complementar) list.push(complementar);
+    list.push(momento[answers.momento_compra]);
+    return list.filter(Boolean).map(function(item,index){return {index:index+1,title:item[0],text:item[1]};});
   }
 
-  function buildWhatsappMessage(resultLabel){
-    var lines = [
-      'Olá, fiz a simulação no site da Duact e gostaria de conhecer as possibilidades disponíveis.',
-      '',
-      'Nome: ' + answers.nome,
-      'Cidade: ' + answers.cidade,
-      'Modelo de interesse: ' + (answers.modelo || '-'),
-      'Forma de compra: ' + (answers.forma_pagamento || '-'),
-      'Gasto diário informado: ' + (answers.gasto_diario || '-'),
-      'Entrada informada: ' + (answers.entrada || '-'),
-      'Momento de compra: ' + (answers.momento_compra || '-'),
-      'Resultado apresentado: ' + resultLabel,
-      'Origem: ' + (utm.utm_source || '-'),
-      'Mídia: ' + (utm.utm_medium || '-'),
-      'Campanha: ' + (utm.utm_campaign || '-'),
-      'Conteúdo: ' + (utm.utm_content || '-'),
-      'ID do lead: ' + leadId,
-      '',
-      'Aguardo as orientações do vendedor.'
-    ];
-    return lines.join('\n');
-  }
+  function diagnostic(){
+    var model=modelData();
+    var timing=timingData();
+    var monthly=monthlyData();
+    var score=scenarioScore();
+    var diag={
+      key:'pesquisando',kicker:'Leitura personalizada',title:'Existe um caminho que vale ser verificado',summary:'Suas respostas mostram que ainda há informações importantes para comparar antes de descartar a compra.',profile:'Possibilidade a investigar',profileText:'O cenário não permite concluir uma aprovação, mas apresenta motivos para uma conversa objetiva.',path:'Comparação orientada',pathText:'Conheça as formas de compra e veja qual se aproxima mais da sua realidade.',cta:'Ver minhas possibilidades com o vendedor',hopeTitle:'Não descarte a possibilidade antes da análise real',hopeText:'Muitas decisões são abandonadas cedo demais. Seu cenário possui elementos suficientes para justificar uma verificação com o vendedor.',score:score,timing:timing,monthly:monthly
+    };
 
-  function showResult(){
-    var key = resolveResultKey();
-    track('view_simulation_result', { result: key });
-
-    form.hidden = true;
-    document.querySelector('.sim-progress-track').hidden = true;
-    backBtn.hidden = true;
-
-    document.querySelectorAll('.sim-result').forEach(function(r){ r.classList.remove('active'); });
-    var target = document.querySelector('.sim-result[data-result="'+key+'"]');
-    if(target) target.classList.add('active');
-
-    var message = buildWhatsappMessage(key);
-    var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER.replace(/\D/g,'') + '?text=' + encodeURIComponent(message);
-
-    document.querySelectorAll('.wa-result-link').forEach(function(a){
-      a.href = waUrl;
-      a.target = '_blank';
-      a.rel = 'noopener';
-    });
-
-    resultsBox.style.display = 'block';
-    shell.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    // Redirecionamento automático avisado, com opção de permanecer na página
-    var redirected = false;
-    var timer = setTimeout(function(){
-      if(!redirected){ redirected = true; window.open(waUrl, '_blank'); }
-    }, 4000);
-    document.getElementById('sim-stay').addEventListener('click', function(){
-      redirected = true;
-      clearTimeout(timer);
-    });
-  }
-
-  // ---------- Botão direto (header / flutuante / CTA final) quando fora do simulador ----------
-  // Já direciona por âncora para #simulador; mensagem simplificada fica disponível via footer/CTA quando necessário.
-
-  // ---------- FAQ accordion ----------
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    var q = item.querySelector('.faq-q');
-    var a = item.querySelector('.faq-a');
-    q.addEventListener('click', function(){
-      var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(function(i){
-        i.classList.remove('open');
-        i.querySelector('.faq-a').style.maxHeight = null;
-      });
-      if(!isOpen){
-        item.classList.add('open');
-        a.style.maxHeight = a.scrollHeight + 'px';
+    if(answers.forma_pagamento==='cartao'){
+      diag.key='cartao';
+      if(answers.condicional==='Sim'){
+        diag.title='Seu cenário mostra um caminho direto para avançar';
+        diag.summary='Você escolheu '+model.name+' e informou que possui limite disponível. Isso cria um cenário objetivo para confirmar a compra no cartão.';
+        diag.profile='Cenário muito favorável';
+        diag.profileText='Limite disponível e opção em até 21x sem juros formam uma combinação positiva.';
+        diag.path='Cartão em até 21x sem juros';
+        diag.pathText=model.card+', sujeito à confirmação do limite e da disponibilidade.';
+        diag.hopeTitle='Você já possui um dos principais elementos para tentar avançar';
+        diag.hopeText='A existência de limite disponível deixa a compra mais próxima. Vale confirmar o valor exato e as condições com o vendedor.';
+        diag.cta='Confirmar minha opção no cartão';
+      }else if(answers.condicional==='Parcialmente'){
+        diag.title='Você já tem parte do caminho e pode existir uma alternativa';
+        diag.summary='O limite parcial não significa que a compra esteja fora de alcance. Há espaço para comparar cartão, entrada e outras formas de pagamento.';
+        diag.profile='Cenário promissor para conversar';
+        diag.profileText='Parte do limite já está disponível e pode ajudar na construção de uma alternativa.';
+        diag.path='Combinação de formas de compra';
+        diag.pathText='Confirme o limite e compare as opções disponíveis para '+model.name+'.';
+        diag.hopeTitle='Seu cenário não começa do zero';
+        diag.hopeText='Você já tem parte do limite. O vendedor pode verificar se existe um formato complementar que aproxime a compra.';
+        diag.cta='Ver como completar minha compra';
+      }else if(answers.condicional==='Ainda não sei'){
+        diag.title='Uma verificação simples pode mudar seu cenário';
+        diag.summary='Você ainda não confirmou o limite do cartão. Antes de descartar essa opção, vale verificar quanto está disponível e comparar com os demais caminhos.';
+        diag.profile='Possibilidade em aberto';
+        diag.profileText='A condição principal ainda não foi confirmada, portanto o cenário pode ser melhor do que parece.';
+        diag.path='Confirmar limite e comparar';
+        diag.pathText='O vendedor pode orientar o valor necessário para '+model.name+' e mostrar alternativas.';
+        diag.hopeTitle='A resposta ainda pode ser positiva';
+        diag.hopeText='Como o limite não foi verificado, não existe um motivo concreto para concluir que a compra não é possível.';
+        diag.cta='Entender o limite necessário';
+      }else{
+        diag.title='Uma conversa rápida pode revelar o melhor caminho';
+        diag.summary='Você prefere receber orientação antes de avaliar o cartão. O vendedor pode explicar as opções sem exigir decisão imediata.';
+        diag.profile='Cenário aberto à orientação';
+        diag.profileText='Existem alternativas que só ficam claras quando valores e condições são comparados.';
+        diag.path='Atendimento personalizado';
+        diag.pathText='Converse sobre cartão, à vista e financiamento para '+model.name+'.';
+        diag.hopeTitle='Você não precisa descobrir tudo sozinho';
+        diag.hopeText='O vendedor pode fazer a primeira leitura e mostrar qual caminho merece ser tentado.';
+        diag.cta='Receber uma orientação personalizada';
       }
+    }else if(answers.forma_pagamento==='pix'){
+      diag.key='pix';
+      diag.title=isSoon()?'Sua forma de pagamento coloca a compra em um cenário muito positivo':'Você escolheu o caminho de menor valor comercial';
+      diag.summary='A opção no PIX ou dinheiro permite acessar o valor especial de '+model.cash+' para '+model.name+', sujeito à confirmação comercial.';
+      diag.profile=isSoon()?'Cenário muito favorável':'Planejamento bem direcionado';
+      diag.profileText=isSoon()?'Forma de pagamento definida e intenção próxima criam um caminho objetivo.':'Você já conhece a forma mais econômica e pode organizar o melhor momento.';
+      diag.path='Valor especial à vista';
+      diag.pathText=model.cash+' para o modelo selecionado.';
+      diag.hopeTitle='A melhor condição já está identificada';
+      diag.hopeText='Seu próximo passo é confirmar disponibilidade e valor. Você já eliminou a principal dúvida sobre a forma de pagamento.';
+      diag.cta='Confirmar condição à vista';
+    }else if(answers.forma_pagamento==='financiamento'){
+      diag.key='financiamento';
+      diag.path='Análise bancária sobre '+model.financeBase;
+      diag.pathText='Juros, entrada, parcelas e aprovação dependem do banco.';
+      diag.cta='Tentar uma análise com o vendedor';
+      if(answers.entrada==='Mais de R$ 3.000'){
+        diag.title='Seu cenário reúne um sinal importante para tentar a aprovação';
+        diag.summary='Você informou uma entrada mais robusta. Isso reduz o valor a financiar e pode contribuir positivamente para a composição da proposta.';
+        diag.profile='Cenário promissor para análise';
+        diag.profileText='A entrada informada fortalece seu ponto de partida, embora a decisão final seja do banco.';
+        diag.hopeTitle='Vale muito a pena colocar seu cenário em análise';
+        diag.hopeText='Você já possui um elemento financeiro relevante. Não é garantia, mas é um motivo concreto para tentar a aprovação.';
+      }else if(answers.entrada==='De R$ 1.001 a R$ 3.000'){
+        diag.title='Seu cenário apresenta sinais positivos para uma tentativa';
+        diag.summary='A entrada intermediária pode ajudar a reduzir o valor financiado e oferecer ao banco uma proposta mais estruturada.';
+        diag.profile='Boa possibilidade de análise';
+        diag.profileText='Você já tem um valor disponível que pode contribuir na composição do financiamento.';
+        diag.hopeTitle='Existe uma base real para iniciar a simulação';
+        diag.hopeText='A entrada não garante aprovação, mas melhora o ponto de partida e justifica conversar com o vendedor.';
+      }else if(answers.entrada==='Até R$ 1.000'){
+        diag.title='Mesmo com uma entrada inicial, existe um caminho para verificar';
+        diag.summary='Uma entrada menor exige mais atenção aos juros, prazo e análise do banco, mas não elimina automaticamente a possibilidade.';
+        diag.profile='Possibilidade com análise personalizada';
+        diag.profileText='Seu cenário precisa ser ajustado, porém ainda existem fatores que podem ser avaliados pelo banco.';
+        diag.hopeTitle='Uma entrada inicial já é diferente de começar sem nenhuma opção';
+        diag.hopeText='Vale tentar uma simulação real para descobrir se prazo e condições podem tornar o cenário viável.';
+      }else if(answers.entrada==='Ainda não'){
+        diag.title='Sem entrada hoje não significa uma resposta negativa automática';
+        diag.summary='A ausência de entrada torna a análise mais criteriosa, mas o banco avalia um conjunto de fatores. Só uma simulação real pode mostrar o resultado.';
+        diag.profile='Cenário que merece verificação';
+        diag.profileText='É necessário avaliar renda, prazo e política do banco antes de concluir qualquer coisa.';
+        diag.hopeTitle='Ainda existe uma pergunta em aberto: o que o banco pode oferecer?';
+        diag.hopeText='Não é possível prometer aprovação, mas também não existe base para descartar seu cenário sem tentar a análise.';
+      }else{
+        diag.title='Seu cenário pode ser avaliado de forma reservada e personalizada';
+        diag.summary='Você preferiu não informar a entrada na página. O vendedor pode conversar de forma individual e iniciar a análise apenas se você desejar.';
+        diag.profile='Possibilidade reservada';
+        diag.profileText='Sem o valor de entrada, o resultado permanece aberto e depende de uma conversa direta.';
+        diag.hopeTitle='Você ainda pode conhecer as possibilidades sem se comprometer';
+        diag.hopeText='Uma conversa privada permite entender o cenário antes de decidir se deseja enviar dados ao banco.';
+      }
+    }else if(answers.forma_pagamento==='comparar'){
+      diag.key='comparar';
+      diag.title='Ter mais de um caminho aumenta suas possibilidades';
+      diag.summary='Você não ficou preso a uma única forma de compra. Cartão, valor à vista e financiamento podem ser comparados para encontrar a opção mais coerente.';
+      diag.profile='Cenário flexível';
+      diag.profileText='Flexibilidade financeira evita descartar a compra por olhar apenas uma condição.';
+      diag.path='Comparação das três opções';
+      diag.pathText='O vendedor pode mostrar as diferenças para '+model.name+'.';
+      diag.hopeTitle='Existe mais de uma porta para tentar';
+      diag.hopeText='Quando uma alternativa não encaixa, outra pode fazer mais sentido. Comparar é a forma mais segura de descobrir.';
+      diag.cta='Comparar todas as possibilidades';
+    }
+
+    if(answers.momento_compra==='Ainda estou pesquisando'){
+      diag.profile='Pesquisa com possibilidade aberta';
+      diag.profileText='Você ainda não precisa fechar, mas pode confirmar agora se existe um cenário viável para o futuro.';
+    }
+
+    diag.points=[
+      'Modelo considerado: '+model.name+'.',
+      monthlyData().text,
+      isSoon()?'Seu momento de compra reforça a importância de confirmar condições agora.':'Você pode conversar sem compromisso e usar a informação para se planejar.'
+    ];
+    diag.insights=answerInsights();
+    return diag;
+  }
+
+  function paymentLabel(value){
+    return {cartao:'Cartão em até 21x sem juros',pix:'PIX ou dinheiro',financiamento:'Financiamento bancário',comparar:'Comparar todas as opções'}[value]||value||'-';
+  }
+  function buildDiagnosticMessage(diag){
+    var opening=diag.key==='financiamento'
+      ? 'Olá! Minha simulação indicou que existe um cenário que vale tentar em uma análise de financiamento da Duact.'
+      : 'Olá! Fiz a simulação gratuita na página da Duact e meu resultado mostrou uma possibilidade que quero entender melhor.';
+    var lines=[
+      opening,'',
+      'Resultado: '+diag.title,
+      'Leitura do cenário: '+diag.profile,
+      'Caminho indicado: '+diag.path,'',
+      'Modelo de interesse: '+(answers.modelo||'-'),
+      'Forma de compra: '+paymentLabel(answers.forma_pagamento),
+      'Gasto diário de mobilidade: '+(answers.gasto_diario||'-'),
+      'Momento de compra: '+(answers.momento_compra||'-')
+    ];
+    var extra=answers.forma_pagamento==='financiamento'?answers.entrada:answers.condicional;
+    if(extra) lines.push('Informação financeira selecionada: '+extra);
+    lines.push('',diag.hopeTitle+'.',diag.hopeText,'','Quero saber quais dados são necessários e quais condições podem existir para o meu cenário.');
+    return lines.concat([''],sourceLines()).join('\n');
+  }
+
+  function showDiagnostic(){
+    var diag=diagnostic();
+    track('view_simulation_result',{result:diag.key,profile:diag.profile,path:diag.path,score:diag.score});
+    form.hidden=true;
+    document.querySelector('.sim-progress-track').hidden=true;
+    document.querySelector('.sim-progress-head').hidden=true;
+    backBtn.hidden=true;
+
+    document.getElementById('diag-kicker').textContent=diag.kicker;
+    document.getElementById('diag-title').textContent=diag.title;
+    document.getElementById('diag-summary').textContent=diag.summary;
+    document.getElementById('diag-profile').textContent=diag.profile;
+    document.getElementById('diag-profile-text').textContent=diag.profileText;
+    document.getElementById('diag-path').textContent=diag.path;
+    document.getElementById('diag-path-text').textContent=diag.pathText;
+    document.getElementById('diag-timing').textContent=diag.timing.label;
+    document.getElementById('diag-timing-text').textContent=diag.timing.text;
+    document.getElementById('diag-monthly').textContent=diag.monthly.value;
+    document.getElementById('diag-monthly-text').textContent=diag.monthly.text;
+    document.getElementById('diag-hope-title').textContent=diag.hopeTitle;
+    document.getElementById('diag-hope-text').textContent=diag.hopeText;
+    document.getElementById('diag-score').textContent=diag.score;
+    document.getElementById('diag-gauge').style.setProperty('--score',diag.score);
+    document.getElementById('diag-wa-cta').textContent=diag.cta;
+
+    var insights=document.getElementById('diag-answer-insights');
+    insights.innerHTML='';
+    diag.insights.forEach(function(item){
+      var card=document.createElement('div');card.className='answer-insight';
+      var idx=document.createElement('span');idx.className='answer-insight-index';idx.textContent=String(item.index).padStart(2,'0');
+      var body=document.createElement('div');var strong=document.createElement('strong');strong.textContent=item.title;var p=document.createElement('p');p.textContent=item.text;
+      body.appendChild(strong);body.appendChild(p);card.appendChild(idx);card.appendChild(body);insights.appendChild(card);
+    });
+
+    var points=document.getElementById('diag-points');points.innerHTML='';
+    diag.points.forEach(function(point){var li=document.createElement('li');li.textContent=point;points.appendChild(li);});
+
+    var resultLink=document.getElementById('diag-wa-cta');
+    var newLink=resultLink.cloneNode(true);
+    resultLink.parentNode.replaceChild(newLink,resultLink);
+    bindWhatsAppLink(newLink,buildDiagnosticMessage(diag),newLink.getAttribute('data-event')||'click_whatsapp_result',{result:diag.key,score:diag.score});
+
+    resultsBox.style.display='block';
+    shell.scrollIntoView({behavior:'smooth',block:'start'});
+
+    var restart=document.getElementById('sim-restart');
+    restart.onclick=function(){
+      Object.keys(answers).forEach(function(key){answers[key]='';});
+      document.querySelectorAll('.sim-option.selected').forEach(function(option){option.classList.remove('selected');});
+      flowState=['rotina'];resultsBox.style.display='none';form.hidden=false;
+      document.querySelector('.sim-progress-track').hidden=false;
+      document.querySelector('.sim-progress-head').hidden=false;
+      backBtn.hidden=false;showStep('rotina');shell.scrollIntoView({behavior:'smooth',block:'start'});track('restart_simulation');
+    };
+  }
+
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var question=item.querySelector('.faq-q');var answer=item.querySelector('.faq-a');
+    question.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(other){other.classList.remove('open');other.querySelector('.faq-a').style.maxHeight=null;});
+      if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px';}
       track('view_faq');
     });
   });
-
 })();
 </script>
 
