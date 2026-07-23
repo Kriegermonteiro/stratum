@@ -477,14 +477,254 @@
     border-left:3px solid var(--amarelo);
   }
 
-  /* Como funciona */
-  .passos-grid{ display:grid; gap:22px; margin-top:44px; }
-  @media (min-width:760px){ .passos-grid{ grid-template-columns:repeat(4,1fr); } }
-  .passo{ padding-top:20px; border-top:2px solid var(--preto); }
-  .passo .num{ font-family:var(--font-display); font-weight:800; font-size:15px; color:var(--amarelo); -webkit-text-stroke:.5px var(--preto); }
-  .passo h4{ font-size:17px; margin:10px 0 8px; }
-  .passo p{ font-size:14.5px; color:var(--cinza-sec); }
-  .como-nota{ margin-top:34px; font-size:13px; color:var(--cinza-sec); }
+
+  /* Jornada interativa até a Duact */
+  .journey-section{
+    background:linear-gradient(180deg,var(--branco) 0%,var(--cinza-claro) 100%);
+    overflow:hidden;
+  }
+  .journey-intro{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    max-width:780px;
+  }
+  .journey-dashboard{
+    position:relative;
+    margin-top:44px;
+    padding:30px;
+    border-radius:28px;
+    background:var(--preto);
+    color:var(--branco);
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .journey-dashboard::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    right:-210px;
+    top:-230px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(250,208,44,.22),rgba(250,208,44,0) 68%);
+    z-index:-1;
+  }
+  .journey-dashboard::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    left:-180px;
+    bottom:-220px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.10),rgba(255,255,255,0) 70%);
+    z-index:-1;
+  }
+  .journey-topline{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:22px;
+  }
+  .journey-topline strong{
+    font-family:var(--font-display);
+    font-size:15px;
+  }
+  .journey-topline span{
+    color:rgba(255,255,255,.58);
+    font-size:13px;
+  }
+  .journey-route{
+    position:relative;
+    min-height:242px;
+    padding-top:74px;
+  }
+  .journey-line{
+    position:absolute;
+    z-index:0;
+    height:5px;
+    border-radius:999px;
+    background:rgba(255,255,255,.15);
+    overflow:hidden;
+  }
+  .journey-line-fill{
+    display:block;
+    width:0;
+    height:100%;
+    border-radius:inherit;
+    background:var(--amarelo);
+    transition:width .72s cubic-bezier(.22,.7,.22,1),height .72s cubic-bezier(.22,.7,.22,1);
+  }
+  .journey-scooter{
+    position:absolute;
+    z-index:4;
+    left:0;
+    top:0;
+    width:68px;
+    height:50px;
+    color:var(--amarelo);
+    filter:drop-shadow(0 8px 12px rgba(0,0,0,.38));
+    transition:transform .72s cubic-bezier(.22,.7,.22,1);
+    pointer-events:none;
+  }
+  .journey-scooter svg{width:100%;height:100%;display:block;}
+  .journey-stops{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:16px;
+  }
+  .journey-stop{
+    color:var(--branco);
+    text-align:left;
+    padding:0 6px;
+    min-width:0;
+  }
+  .journey-marker{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    margin-bottom:18px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,.42);
+    background:var(--preto);
+    font-family:var(--font-display);
+    font-size:11px;
+    font-weight:800;
+    transition:background .25s ease,border-color .25s ease,color .25s ease,transform .25s ease;
+  }
+  .journey-stop:hover .journey-marker,
+  .journey-stop:focus-visible .journey-marker{
+    border-color:var(--amarelo);
+    transform:scale(1.08);
+  }
+  .journey-stop.active .journey-marker{
+    background:var(--amarelo);
+    color:var(--preto);
+    border-color:var(--amarelo);
+    transform:scale(1.12);
+  }
+  .journey-stop-content{display:block;}
+  .journey-stop-title{
+    display:block;
+    font-family:var(--font-display);
+    font-size:15px;
+    font-weight:700;
+    line-height:1.25;
+  }
+  .journey-stop-copy{
+    display:block;
+    margin-top:7px;
+    color:rgba(255,255,255,.56);
+    font-size:13px;
+    line-height:1.45;
+  }
+  .journey-stop.active .journey-stop-copy{color:rgba(255,255,255,.82);}
+  .journey-live{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:24px;
+    align-items:center;
+    margin-top:26px;
+    padding:24px;
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:18px;
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(8px);
+  }
+  .journey-live-copy{max-width:690px;}
+  .journey-live-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    margin-bottom:10px;
+    color:var(--amarelo);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .journey-live-badge::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--amarelo);
+    box-shadow:0 0 0 5px rgba(250,208,44,.14);
+  }
+  .journey-live h3{
+    font-size:clamp(20px,3vw,28px);
+    margin-bottom:9px;
+  }
+  .journey-live p{
+    color:rgba(255,255,255,.67);
+    font-size:15px;
+    max-width:650px;
+  }
+  .journey-live-meta{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:142px;
+    min-height:86px;
+    padding:14px;
+    border-radius:16px;
+    background:var(--amarelo);
+    color:var(--preto);
+    text-align:center;
+  }
+  .journey-live-meta strong{
+    display:block;
+    font-family:var(--font-display);
+    font-size:18px;
+    line-height:1.1;
+  }
+  .journey-live-meta span{
+    display:block;
+    margin-top:5px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+  }
+  .journey-actions{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:22px;
+  }
+  @media (max-width:759px){
+    .journey-dashboard{padding:24px 18px;border-radius:22px;}
+    .journey-topline{align-items:flex-start;flex-direction:column;gap:4px;}
+    .journey-route{min-height:560px;padding:0 0 0 70px;}
+    .journey-stops{grid-template-columns:1fr;gap:20px;}
+    .journey-stop{
+      display:grid;
+      grid-template-columns:38px 1fr;
+      column-gap:12px;
+      padding:0;
+    }
+    .journey-marker{margin:0;grid-row:1 / span 2;}
+    .journey-stop-copy{margin-top:5px;}
+    .journey-line{width:5px;height:0;}
+    .journey-line-fill{width:100%;height:0;}
+    .journey-scooter{width:60px;height:44px;}
+    .journey-live{grid-template-columns:1fr;gap:18px;padding:20px;}
+    .journey-live-meta{min-width:0;min-height:72px;justify-content:flex-start;text-align:left;}
+    .journey-actions .btn{width:100%;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .journey-scooter,.journey-line-fill,.journey-marker{transition:none!important;}
+  }
 
   /* FAQ */
   .faq-list{ margin-top:36px; max-width:760px; }
@@ -846,8 +1086,6 @@
         <a href="#simulador" class="btn-ghost" data-event="select_financing">Quero fazer uma simulação</a>
       </div>
     </div>
-
-    <div class="aviso-box">A Landing Page não realiza aprovação de crédito. O vendedor dará continuidade à simulação e apresentará as condições disponíveis.</div>
   </div>
 </section>
 
@@ -1033,12 +1271,6 @@
             <strong id="diag-hope-title"></strong>
             <p id="diag-hope-text"></p>
           </div>
-
-
-          <div class="diagnostic-next">
-            <strong>Seu resultado sugere um caminho para tentar, não uma aprovação garantida.</strong>
-            A decisão sobre financiamento, juros, entrada e parcelas é do banco. Ainda assim, suas respostas podem revelar elementos positivos que justificam uma análise real com o vendedor.
-          </div>
           <div class="hero-ctas" style="margin-top:14px;">
             <button type="button" class="btn btn-outline dark" style="border-color:rgba(0,0,0,.2)" id="sim-restart">Refazer simulação</button>
           </div>
@@ -1091,8 +1323,6 @@
         </div>
       </div>
     </div>
-
-    <p class="comercial-note">Valores e condições informados conforme os dados atuais da operação e sujeitos à confirmação de disponibilidade no momento do atendimento.</p>
   </div>
 </section>
 
@@ -1185,35 +1415,90 @@
   </div>
 </section>
 
-<!-- ============ COMO FUNCIONA ============ -->
-<section id="como-funciona">
+<!-- ============ JORNADA INTERATIVA ============ -->
+<section id="como-funciona" class="journey-section">
   <div class="container">
-    <span class="eyebrow on-light">O caminho até a sua Duact</span>
-    <h2 class="section-title">Da simulação à sua Duact em poucos passos</h2>
+    <div class="journey-intro">
+      <span class="eyebrow on-light">Sua rota até a Duact</span>
+      <h2 class="section-title">Do primeiro clique ao guidão: veja a sua compra ganhar movimento</h2>
+      <p class="section-sub">A mini Maxus percorre a rota enquanto você conhece o caminho: simular, conversar, comparar e escolher.</p>
+    </div>
 
-    <div class="passos-grid">
-      <div class="passo">
-        <div class="num">01</div>
-        <h4>Escolha um caminho</h4>
-        <p>Veja os modelos e indique como gostaria de comprar.</p>
+    <div class="journey-dashboard" id="journey-dashboard">
+      <div class="journey-topline">
+        <strong>Rota de compra</strong>
+        <span>Clique em uma estação para explorar</span>
       </div>
-      <div class="passo">
-        <div class="num">02</div>
-        <h4>Fale com o vendedor</h4>
-        <p>O vendedor recebe suas respostas e apresenta as possibilidades disponíveis.</p>
+
+      <div class="journey-route" id="journey-route">
+        <div class="journey-line" id="journey-line" aria-hidden="true"><span class="journey-line-fill" id="journey-line-fill"></span></div>
+
+        <div class="journey-scooter" id="journey-scooter" aria-hidden="true">
+          <svg viewBox="0 0 140 92" role="img" aria-label="Miniatura estilizada da Maxus">
+            <circle cx="31" cy="72" r="15" fill="#111" stroke="currentColor" stroke-width="6"></circle>
+            <circle cx="109" cy="72" r="15" fill="#111" stroke="currentColor" stroke-width="6"></circle>
+            <path d="M42 69h47l9-31H68l-12 18H42z" fill="currentColor"></path>
+            <path d="M79 38l9-17h18l7 8-6 9z" fill="currentColor"></path>
+            <path d="M101 21l10-13" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M108 8h18" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M63 54H42l-8-24" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M30 30h18" stroke="currentColor" stroke-width="5" stroke-linecap="round"></path>
+            <rect x="65" y="45" width="29" height="8" rx="4" fill="#111"></rect>
+            <text x="67" y="67" font-size="10" font-weight="900" fill="#111" font-family="Arial, sans-serif">MAXUS</text>
+          </svg>
+        </div>
+
+        <div class="journey-stops" id="journey-stops">
+          <button type="button" class="journey-stop active" data-journey-step="0" aria-current="step">
+            <span class="journey-marker">01</span>
+            <span class="journey-stop-content">
+              <span class="journey-stop-title">Simule sem cadastro</span>
+              <span class="journey-stop-copy">Respostas rápidas, sem nome ou telefone.</span>
+            </span>
+          </button>
+          <button type="button" class="journey-stop" data-journey-step="1">
+            <span class="journey-marker">02</span>
+            <span class="journey-stop-content">
+              <span class="journey-stop-title">Veja seu caminho</span>
+              <span class="journey-stop-copy">Receba uma leitura alinhada ao seu cenário.</span>
+            </span>
+          </button>
+          <button type="button" class="journey-stop" data-journey-step="2">
+            <span class="journey-marker">03</span>
+            <span class="journey-stop-content">
+              <span class="journey-stop-title">Converse 1 a 1</span>
+              <span class="journey-stop-copy">A conversa já começa com o contexto certo.</span>
+            </span>
+          </button>
+          <button type="button" class="journey-stop" data-journey-step="3">
+            <span class="journey-marker">04</span>
+            <span class="journey-stop-content">
+              <span class="journey-stop-title">Escolha sua Duact</span>
+              <span class="journey-stop-copy">Compare as condições e decida com segurança.</span>
+            </span>
+          </button>
+        </div>
       </div>
-      <div class="passo">
-        <div class="num">03</div>
-        <h4>Confirme as condições</h4>
-        <p>Confira valores, disponibilidade, análise bancária e demais informações.</p>
+
+      <div class="journey-live" aria-live="polite">
+        <div class="journey-live-copy">
+          <span class="journey-live-badge" id="journey-live-badge">Estação 1 de 4</span>
+          <h3 id="journey-live-title">Comece entendendo o que pode funcionar para você</h3>
+          <p id="journey-live-text">A simulação organiza seu modelo de interesse, forma de pagamento e momento de compra para revelar a rota mais coerente.</p>
+        </div>
+        <div class="journey-live-meta">
+          <div>
+            <strong id="journey-live-value">1 minuto</strong>
+            <span id="journey-live-label">para simular</span>
+          </div>
+        </div>
       </div>
-      <div class="passo">
-        <div class="num">04</div>
-        <h4>Finalize sua compra</h4>
-        <p>Após escolher a melhor opção, conclua diretamente com o vendedor.</p>
+
+      <div class="journey-actions">
+        <a href="#simulador" class="btn btn-primary">Fazer simulação grátis</a>
+        <a href="#" class="btn btn-outline wa-direct" data-wa-scenario="journey" data-event="click_whatsapp_journey">Falar com o atendente</a>
       </div>
     </div>
-    <p class="como-nota">A expressão "em poucos passos" representa a simplicidade do processo, não um prazo garantido.</p>
   </div>
 </section>
 
@@ -1328,7 +1613,6 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <p>O financiamento está sujeito à análise de crédito do banco parceiro. Esta página não realiza aprovação de crédito.</p>
     <p style="margin-top:8px;">© Dillen Store — Todos os direitos reservados.</p>
   </div>
 </footer>
@@ -1781,6 +2065,153 @@
       track('view_faq');
     });
   });
+})();
+</script>
+
+
+<script>
+(function(){
+  var dashboard=document.getElementById('journey-dashboard');
+  if(!dashboard) return;
+
+  var route=document.getElementById('journey-route');
+  var line=document.getElementById('journey-line');
+  var fill=document.getElementById('journey-line-fill');
+  var scooter=document.getElementById('journey-scooter');
+  var stops=Array.prototype.slice.call(dashboard.querySelectorAll('.journey-stop'));
+  var badge=document.getElementById('journey-live-badge');
+  var title=document.getElementById('journey-live-title');
+  var text=document.getElementById('journey-live-text');
+  var value=document.getElementById('journey-live-value');
+  var label=document.getElementById('journey-live-label');
+  var active=0;
+  var autoTimer=null;
+  var autoplayStarted=false;
+  var mobileQuery=window.matchMedia('(max-width:759px)');
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  var stages=[
+    {
+      badge:'Estação 1 de 4',
+      title:'Comece entendendo o que pode funcionar para você',
+      text:'A simulação organiza seu modelo de interesse, forma de pagamento e momento de compra para revelar a rota mais coerente.',
+      value:'1 minuto',
+      label:'para simular'
+    },
+    {
+      badge:'Estação 2 de 4',
+      title:'Seu cenário vira uma direção clara',
+      text:'Em vez de receber uma resposta genérica, você visualiza qual caminho merece ser explorado primeiro: cartão, PIX ou financiamento.',
+      value:'Na hora',
+      label:'resultado visual'
+    },
+    {
+      badge:'Estação 3 de 4',
+      title:'A conversa já começa no ponto certo',
+      text:'Ao chamar o atendente, a mensagem leva o contexto essencial do resultado. Menos explicação repetida e mais foco nas possibilidades.',
+      value:'1 a 1',
+      label:'atendimento direto'
+    },
+    {
+      badge:'Estação 4 de 4',
+      title:'Compare, escolha e avance para a sua Duact',
+      text:'O atendente apresenta disponibilidade e condições para você comparar os modelos e decidir qual opção combina melhor com a sua rotina.',
+      value:'3 caminhos',
+      label:'cartão, PIX ou banco'
+    }
+  ];
+
+  function markerCenter(marker,routeRect){
+    var rect=marker.getBoundingClientRect();
+    return {
+      x:rect.left+rect.width/2-routeRect.left,
+      y:rect.top+rect.height/2-routeRect.top
+    };
+  }
+
+  function positionRoute(){
+    if(!route.offsetParent) return;
+    var routeRect=route.getBoundingClientRect();
+    var markers=stops.map(function(stop){return stop.querySelector('.journey-marker');});
+    var first=markerCenter(markers[0],routeRect);
+    var last=markerCenter(markers[markers.length-1],routeRect);
+    var target=markerCenter(markers[active],routeRect);
+    var scooterW=scooter.offsetWidth;
+    var scooterH=scooter.offsetHeight;
+
+    if(mobileQuery.matches){
+      line.style.left=(first.x-2.5)+'px';
+      line.style.top=first.y+'px';
+      line.style.width='5px';
+      line.style.height=Math.max(0,last.y-first.y)+'px';
+      fill.style.width='100%';
+      fill.style.height=(active===0?0:((target.y-first.y)/(last.y-first.y))*100)+'%';
+      scooter.style.transform='translate3d('+(first.x-scooterW-12)+'px,'+(target.y-scooterH/2)+'px,0)';
+    }else{
+      line.style.left=first.x+'px';
+      line.style.top=(first.y-2.5)+'px';
+      line.style.width=Math.max(0,last.x-first.x)+'px';
+      line.style.height='5px';
+      fill.style.height='100%';
+      fill.style.width=(active===0?0:((target.x-first.x)/(last.x-first.x))*100)+'%';
+      scooter.style.transform='translate3d('+(target.x-scooterW/2)+'px,'+(first.y-scooterH-18)+'px,0)';
+    }
+  }
+
+  function setStage(index,fromUser){
+    active=Math.max(0,Math.min(stages.length-1,index));
+    stops.forEach(function(stop,i){
+      var selected=i===active;
+      stop.classList.toggle('active',selected);
+      if(selected) stop.setAttribute('aria-current','step');
+      else stop.removeAttribute('aria-current');
+    });
+    var stage=stages[active];
+    badge.textContent=stage.badge;
+    title.textContent=stage.title;
+    text.textContent=stage.text;
+    value.textContent=stage.value;
+    label.textContent=stage.label;
+    requestAnimationFrame(positionRoute);
+    if(fromUser) stopAutoplay();
+  }
+
+  function stopAutoplay(){
+    if(autoTimer){clearInterval(autoTimer);autoTimer=null;}
+  }
+
+  function startAutoplay(){
+    if(reduceMotion||autoplayStarted) return;
+    autoplayStarted=true;
+    var next=0;
+    autoTimer=setInterval(function(){
+      next+=1;
+      if(next>=stages.length){stopAutoplay();return;}
+      setStage(next,false);
+    },2200);
+  }
+
+  stops.forEach(function(stop,index){
+    stop.addEventListener('click',function(){setStage(index,true);});
+  });
+  dashboard.addEventListener('mouseenter',stopAutoplay);
+  dashboard.addEventListener('focusin',stopAutoplay);
+  window.addEventListener('resize',function(){requestAnimationFrame(positionRoute);});
+  if(mobileQuery.addEventListener) mobileQuery.addEventListener('change',function(){requestAnimationFrame(positionRoute);});
+
+  if('IntersectionObserver' in window){
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){startAutoplay();observer.disconnect();}
+      });
+    },{threshold:.28});
+    observer.observe(dashboard);
+  }else{
+    startAutoplay();
+  }
+
+  setStage(0,false);
+  setTimeout(positionRoute,120);
 })();
 </script>
 
