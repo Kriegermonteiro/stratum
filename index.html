@@ -388,6 +388,95 @@
   }
   .produto-item .status{ font-size:12px; font-weight:700; color:var(--cinza-sec); text-transform:uppercase; letter-spacing:.04em; }
 
+
+  /* Especificações técnicas por modelo */
+  .tech-model-grid{
+    display:grid;
+    gap:24px;
+    margin-top:42px;
+  }
+  .tech-model-card{
+    background:var(--branco);
+    border:1.5px solid rgba(0,0,0,.08);
+    border-radius:20px;
+    overflow:hidden;
+  }
+  .tech-model-head{
+    padding:26px 24px 22px;
+    background:var(--preto);
+    color:var(--branco);
+  }
+  .tech-model-head .tech-tag{
+    display:inline-block;
+    color:var(--amarelo);
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .tech-model-head h3{font-size:24px;margin-bottom:8px;}
+  .tech-model-head p{font-size:13.5px;color:rgba(255,255,255,.64);max-width:680px;}
+  .tech-model-body{
+    display:grid;
+    gap:28px;
+    padding:26px 24px 28px;
+  }
+  @media(min-width:900px){
+    .tech-model-body{grid-template-columns:1fr 1fr;padding:30px;}
+  }
+  .tech-block h4{
+    font-size:16px;
+    margin-bottom:16px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--amarelo);
+  }
+  .tech-spec-list{display:grid;gap:0;}
+  .tech-spec-row{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:14px;
+    align-items:start;
+    padding:10px 0;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    font-size:14px;
+  }
+  .tech-spec-row:last-child{border-bottom:none;}
+  .tech-spec-row dt{color:var(--cinza-sec);font-weight:600;}
+  .tech-spec-row dd{text-align:right;font-weight:700;color:var(--grafite);}
+  .tech-feature-list{display:grid;gap:11px;}
+  .tech-feature-list li{
+    position:relative;
+    padding-left:26px;
+    font-size:14px;
+    color:#3d3d3d;
+  }
+  .tech-feature-list li::before{
+    content:'✓';
+    position:absolute;
+    left:0;
+    top:0;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--amarelo);
+    color:var(--preto);
+    font-size:11px;
+    font-weight:900;
+  }
+  .tech-note{
+    margin:0 24px 26px;
+    padding:14px 16px;
+    border-radius:10px;
+    background:var(--cinza-claro);
+    color:var(--cinza-sec);
+    font-size:12.5px;
+    border-left:3px solid var(--amarelo);
+  }
+
   /* Como funciona */
   .passos-grid{ display:grid; gap:22px; margin-top:44px; }
   @media (min-width:760px){ .passos-grid{ grid-template-columns:repeat(4,1fr); } }
@@ -617,15 +706,6 @@
   .hope-callout>span{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#7a6511;margin-bottom:6px;}
   .hope-callout strong{display:block;font-family:var(--font-display);font-size:20px;max-width:85%;margin-bottom:7px;}
   .hope-callout p{font-size:14px;color:#5b522d;max-width:90%;}
-  .answer-breakdown{margin:22px 0;}
-  .answer-breakdown-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin-bottom:12px;}
-  .answer-breakdown h4{font-size:16px;}
-  .answer-breakdown-head p{font-size:12px;color:var(--cinza-sec);}
-  .answer-insights{display:grid;gap:9px;}
-  .answer-insight{display:grid;grid-template-columns:34px minmax(0,1fr);gap:11px;padding:12px 13px;border:1px solid rgba(0,0,0,.08);border-radius:11px;background:#fff;}
-  .answer-insight-index{width:30px;height:30px;border-radius:9px;background:var(--grafite);color:var(--amarelo);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
-  .answer-insight strong{display:block;font-size:13px;margin-bottom:2px;}
-  .answer-insight p{font-size:12.5px;color:var(--cinza-sec);}
 
 </style>
 </head>
@@ -954,15 +1034,6 @@
             <p id="diag-hope-text"></p>
           </div>
 
-          <div class="answer-breakdown">
-            <div class="answer-breakdown-head">
-              <h4>Como cada resposta influenciou sua leitura</h4>
-              <p>O diagnóstico muda de acordo com suas escolhas.</p>
-            </div>
-            <div class="answer-insights" id="diag-answer-insights"></div>
-          </div>
-
-          <ul class="diagnostic-points" id="diag-points"></ul>
 
           <div class="diagnostic-next">
             <strong>Seu resultado sugere um caminho para tentar, não uma aprovação garantida.</strong>
@@ -1025,24 +1096,91 @@
   </div>
 </section>
 
-<!-- ============ INFORMAÇÕES DOS PRODUTOS ============ -->
+<!-- ============ ESPECIFICAÇÕES TÉCNICAS ============ -->
 <section class="produtos" id="produtos">
   <div class="container">
-    <span class="eyebrow on-light">Antes de decidir</span>
-    <h2 class="section-title">Conheça os detalhes antes de decidir</h2>
-    <p class="section-sub">Escolher um veículo exige mais do que olhar apenas o preço. Aqui você consulta as informações oficiais disponíveis sobre cada modelo.</p>
+    <span class="eyebrow on-light">Informações dos modelos</span>
+    <h2 class="section-title">Especificações técnicas e recursos</h2>
+    <p class="section-sub">Compare os principais dados da Maxus e da X13 antes de conversar com o atendente.</p>
 
-    <div class="produtos-grid">
-      <div class="produto-item"><span>Especificações técnicas</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Fotografias</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Cores disponíveis</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Informações sobre bateria</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Orientações de recarga</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Capacidade</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Dimensões</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Garantia</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Assistência técnica</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
-      <div class="produto-item"><span>Manual do produto</span><span class="status">[INSERIR DOCUMENTO OU INFORMAÇÃO OFICIAL]</span></div>
+    <div class="tech-model-grid">
+      <article class="tech-model-card" id="spec-maxus">
+        <div class="tech-model-head">
+          <span class="tech-tag">Catálogo oficial Maxus 2026</span>
+          <h3>Duact Maxus</h3>
+          <p>Informações extraídas do catálogo oficial fornecido para a Maxus 2026.</p>
+        </div>
+        <div class="tech-model-body">
+          <div class="tech-block">
+            <h4>Ficha técnica principal</h4>
+            <dl class="tech-spec-list">
+              <div class="tech-spec-row"><dt>Motor</dt><dd>1000 W</dd></div>
+              <div class="tech-spec-row"><dt>Velocidade máxima</dt><dd>32 km/h</dd></div>
+              <div class="tech-spec-row"><dt>Torque</dt><dd>60 Nm</dd></div>
+              <div class="tech-spec-row"><dt>Bateria</dt><dd>Lítio 60 V 20 Ah, removível</dd></div>
+              <div class="tech-spec-row"><dt>Autonomia máxima</dt><dd>Até 70 km</dd></div>
+              <div class="tech-spec-row"><dt>Capacidade de carga</dt><dd>Até 150 kg</dd></div>
+              <div class="tech-spec-row"><dt>Peso do veículo</dt><dd>55 kg</dd></div>
+              <div class="tech-spec-row"><dt>Altura</dt><dd>105 cm</dd></div>
+              <div class="tech-spec-row"><dt>Largura</dt><dd>69 cm</dd></div>
+              <div class="tech-spec-row"><dt>Distância entre eixos</dt><dd>129 cm</dd></div>
+              <div class="tech-spec-row"><dt>Freios</dt><dd>Disco ventilado com acionamento hidráulico</dd></div>
+              <div class="tech-spec-row"><dt>Pneus</dt><dd>Tubeless, sem câmara</dd></div>
+            </dl>
+          </div>
+          <div class="tech-block">
+            <h4>Recursos e tecnologias</h4>
+            <ul class="tech-feature-list">
+              <li>Painel digital inteligente com proteção IP65 contra poeira e água.</li>
+              <li>TAG codificada para acionamento por aproximação.</li>
+              <li>Setas, pisca-alerta, farol e luz de freio em LED.</li>
+              <li>Suspensão hidráulica reforçada, dianteira e traseira, com três níveis de regulagem.</li>
+              <li>Motor traseiro com sistema FTS (Full Torque System).</li>
+              <li>Banco MAX-FIX com revestimento duplo e material antiderrapante.</li>
+              <li>Baú de 28 litros, chaveado e resistente à água.</li>
+              <li>Roda em liga metálica especial.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="tech-note">A autonomia pode variar conforme altimetria do percurso, peso do condutor, modo de condução, velocidade e potência utilizada.</p>
+      </article>
+
+      <article class="tech-model-card" id="spec-x13">
+        <div class="tech-model-head">
+          <span class="tech-tag">Dados técnicos informados</span>
+          <h3>Duact X13</h3>
+          <p>Principais especificações e recursos informados para o modelo X13.</p>
+        </div>
+        <div class="tech-model-body">
+          <div class="tech-block">
+            <h4>Ficha técnica principal</h4>
+            <dl class="tech-spec-list">
+              <div class="tech-spec-row"><dt>Motor</dt><dd>1000 W (potência nominal)</dd></div>
+              <div class="tech-spec-row"><dt>Velocidade máxima</dt><dd>32 km/h (limitada)</dd></div>
+              <div class="tech-spec-row"><dt>Bateria</dt><dd>Lítio 60 V 20 Ah, removível</dd></div>
+              <div class="tech-spec-row"><dt>Autonomia</dt><dd>40 a 60 km por carga</dd></div>
+              <div class="tech-spec-row"><dt>Tempo de recarga</dt><dd>6 a 8 horas</dd></div>
+              <div class="tech-spec-row"><dt>Capacidade de carga</dt><dd>120 kg a 150 kg</dd></div>
+              <div class="tech-spec-row"><dt>Freios</dt><dd>Hidráulicos a disco, dianteiro e traseiro</dd></div>
+              <div class="tech-spec-row"><dt>Peso do veículo</dt><dd>Aproximadamente 65 kg a 70 kg</dd></div>
+            </dl>
+          </div>
+          <div class="tech-block">
+            <h4>Recursos e tecnologias</h4>
+            <ul class="tech-feature-list">
+              <li>Sistema Keyless com tecnologia NFC para partida por aproximação de cartão ou tag.</li>
+              <li>Sistema de som com conectividade Bluetooth.</li>
+              <li>Faróis em LED.</li>
+              <li>Alarme integrado com sensor de movimento e trava de roda.</li>
+              <li>Painel digital.</li>
+              <li>Entrada USB para carregamento de celular.</li>
+              <li>Suporte para smartphone.</li>
+              <li>Marcha ré.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="tech-note">Autonomia, capacidade e desempenho podem variar conforme carga, percurso, condições de uso e conservação da bateria.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -1170,9 +1308,9 @@
   <div class="container footer-grid">
     <div>
       <h5>Dillen Store</h5>
-      <p>CNPJ {{CNPJ}}</p>
+      <p>CNPJ 57.102.798/0001-08</p>
       <p><a href="#localizacao">Ver endereço completo no mapa</a></p>
-      <p style="margin-top:12px;">Atendimento: {{HORARIO_ATENDIMENTO}}</p>
+      <p style="margin-top:12px;">Atendimento: segunda a sábado, das 10h às 18h</p>
     </div>
     <div>
       <h5>Contato</h5>
@@ -1364,183 +1502,141 @@
     return Math.max(45,Math.min(94,score));
   }
 
-  function answerInsights(){
-    var gasto={
-      'Até R$ 10':['Gasto diário mais baixo','A compra precisa ser avaliada mais pela autonomia e pela praticidade do que por uma economia imediata.'],
-      'De R$ 11 a R$ 20':['Gasto recorrente relevante','Esse valor já merece ser comparado com uma forma própria de mobilidade.'],
-      'De R$ 21 a R$ 30':['Custo mensal importante','Sua rotina já movimenta um valor que pode justificar uma análise mais séria das opções.'],
-      'Mais de R$ 30':['Forte dor financeira de mobilidade','O custo recorrente cria um motivo concreto para procurar uma alternativa própria.'],
-      'Não sei calcular':['Oportunidade de descoberta','Entender o gasto atual pode revelar uma possibilidade que hoje está escondida.']
-    };
-    var modelo={
-      'Duact Maxus':['Interesse definido na Maxus','Ter um modelo escolhido deixa a conversa com o vendedor mais objetiva.'],
-      'Duact X13':['Interesse definido na X13','Ter um modelo escolhido permite avaliar valores e condições com mais precisão.'],
-      'Quero comparar os dois':['Comparação antes da decisão','Você pode receber uma orientação prática sobre qual modelo atende melhor à sua rotina.'],
-      'Ainda não sei qual escolher':['Escolha ainda aberta','O vendedor pode ajudar a eliminar dúvidas antes de qualquer decisão financeira.']
-    };
-    var forma={
-      cartao:['Cartão como caminho principal','A opção em até 21x sem juros pode simplificar a compra quando existe limite disponível.'],
-      pix:['Pagamento à vista','Essa escolha oferece o menor valor comercial entre as opções atuais.'],
-      financiamento:['Financiamento bancário','Há uma possibilidade real de análise usando o preço à vista como referência.'],
-      comparar:['Mais de um caminho disponível','Comparar cartão, à vista e financiamento aumenta a chance de encontrar uma alternativa compatível.']
-    };
-    var complementar;
-    if(answers.forma_pagamento==='cartao'){
-      complementar={
-        'Sim':['Limite disponível informado','Esse é um sinal bastante positivo para avançar na opção em 21x sem juros.'],
-        'Parcialmente':['Parte do limite disponível','Você já possui uma parte do caminho e pode verificar combinações ou alternativas.'],
-        'Ainda não sei':['Limite ainda não confirmado','Uma simples consulta ao cartão pode esclarecer se essa opção está mais próxima do que parece.'],
-        'Quero conversar com o vendedor':['Busca por orientação','Você prefere entender as possibilidades antes de expor detalhes financeiros.']
-      }[answers.condicional];
-    }else if(answers.forma_pagamento==='financiamento'){
-      complementar={
-        'Ainda não':['Sem entrada no momento','Isso não encerra a possibilidade: o banco avalia um conjunto de informações, e vale verificar antes de desistir.'],
-        'Até R$ 1.000':['Entrada inicial disponível','Mesmo uma entrada menor pode ser um ponto de partida para uma proposta personalizada.'],
-        'De R$ 1.001 a R$ 3.000':['Entrada intermediária disponível','Você já possui um elemento que pode fortalecer a composição da proposta bancária.'],
-        'Mais de R$ 3.000':['Entrada mais robusta','Esse é um sinal positivo para reduzir o valor financiado e buscar uma análise.'],
-        'Prefiro conversar sobre isso':['Informação reservada','O cenário ainda pode ser avaliado individualmente pelo vendedor, sem exposição na página.']
-      }[answers.entrada];
-    }
-    var momento={
-      'O mais rápido possível':['Pronto para agir','Seu momento favorece confirmar condições e disponibilidade sem adiar.'],
-      'Nos próximos 30 dias':['Compra em horizonte próximo','Há tempo suficiente para análise, comparação e organização.'],
-      'Nos próximos três meses':['Planejamento consciente','Você pode preparar entrada, limite ou documentação antes de avançar.'],
-      'Ainda estou pesquisando':['Pesquisa sem pressão','Conhecer as condições agora pode ajudar você a decidir com mais segurança depois.']
-    };
-    var list=[gasto[answers.gasto_diario],modelo[answers.modelo],forma[answers.forma_pagamento]];
-    if(complementar) list.push(complementar);
-    list.push(momento[answers.momento_compra]);
-    return list.filter(Boolean).map(function(item,index){return {index:index+1,title:item[0],text:item[1]};});
-  }
-
   function diagnostic(){
     var model=modelData();
     var timing=timingData();
     var monthly=monthlyData();
     var score=scenarioScore();
     var diag={
-      key:'pesquisando',kicker:'Leitura personalizada',title:'Existe um caminho que vale ser verificado',summary:'Suas respostas mostram que ainda há informações importantes para comparar antes de descartar a compra.',profile:'Possibilidade a investigar',profileText:'O cenário não permite concluir uma aprovação, mas apresenta motivos para uma conversa objetiva.',path:'Comparação orientada',pathText:'Conheça as formas de compra e veja qual se aproxima mais da sua realidade.',cta:'Ver minhas possibilidades com o vendedor',hopeTitle:'Não descarte a possibilidade antes da análise real',hopeText:'Muitas decisões são abandonadas cedo demais. Seu cenário possui elementos suficientes para justificar uma verificação com o vendedor.',score:score,timing:timing,monthly:monthly
+      key:'pesquisando',
+      kicker:'Resultado da sua simulação',
+      title:'Há uma possibilidade que vale ser analisada',
+      summary:'Seu cenário pode ter mais opções do que parece. O próximo passo é confirmar as condições atuais com o atendente.',
+      profile:'Possibilidade em avaliação',
+      profileText:'A simulação indica que vale continuar a conversa.',
+      path:'Análise personalizada',
+      pathText:'O atendente pode verificar as condições adequadas ao seu momento.',
+      cta:'Ver minhas possibilidades',
+      hopeTitle:'Seu cenário ainda está em aberto',
+      hopeText:'Uma análise real pode revelar uma condição possível para você.',
+      score:score,
+      timing:timing,
+      monthly:monthly
     };
 
     if(answers.forma_pagamento==='cartao'){
       diag.key='cartao';
       if(answers.condicional==='Sim'){
-        diag.title='Seu cenário mostra um caminho direto para avançar';
-        diag.summary='Você escolheu '+model.name+' e informou que possui limite disponível. Isso cria um cenário objetivo para confirmar a compra no cartão.';
-        diag.profile='Cenário muito favorável';
-        diag.profileText='Limite disponível e opção em até 21x sem juros formam uma combinação positiva.';
-        diag.path='Cartão em até 21x sem juros';
-        diag.pathText=model.card+', sujeito à confirmação do limite e da disponibilidade.';
-        diag.hopeTitle='Você já possui um dos principais elementos para tentar avançar';
-        diag.hopeText='A existência de limite disponível deixa a compra mais próxima. Vale confirmar o valor exato e as condições com o vendedor.';
-        diag.cta='Confirmar minha opção no cartão';
+        diag.title='Sua compra pode estar mais próxima do que parece';
+        diag.summary='Há um caminho objetivo para confirmar a compra no cartão. Consulte agora as condições disponíveis para o modelo escolhido.';
+        diag.profile='Cenário favorável';
+        diag.profileText='Existe uma boa base para avançar na conversa.';
+        diag.path='Compra no cartão';
+        diag.pathText='Consulte a opção em até 21x sem juros.';
+        diag.hopeTitle='Você está próximo de uma resposta objetiva';
+        diag.hopeText='Uma conversa rápida pode confirmar se essa opção funciona para você.';
+        diag.cta='Confirmar opção no cartão';
       }else if(answers.condicional==='Parcialmente'){
-        diag.title='Você já tem parte do caminho e pode existir uma alternativa';
-        diag.summary='O limite parcial não significa que a compra esteja fora de alcance. Há espaço para comparar cartão, entrada e outras formas de pagamento.';
-        diag.profile='Cenário promissor para conversar';
-        diag.profileText='Parte do limite já está disponível e pode ajudar na construção de uma alternativa.';
-        diag.path='Combinação de formas de compra';
-        diag.pathText='Confirme o limite e compare as opções disponíveis para '+model.name+'.';
-        diag.hopeTitle='Seu cenário não começa do zero';
-        diag.hopeText='Você já tem parte do limite. O vendedor pode verificar se existe um formato complementar que aproxime a compra.';
-        diag.cta='Ver como completar minha compra';
+        diag.title='Seu cenário pode ter uma alternativa viável';
+        diag.summary='Ainda existem caminhos que podem ser combinados. Vale conferir as possibilidades disponíveis antes de descartar a compra.';
+        diag.profile='Cenário com alternativas';
+        diag.profileText='Há espaço para construir uma condição mais adequada.';
+        diag.path='Opções combinadas';
+        diag.pathText='Compare cartão, entrada e outras formas de compra.';
+        diag.hopeTitle='A compra ainda pode ser possível';
+        diag.hopeText='O atendente pode verificar uma alternativa compatível com o seu momento.';
+        diag.cta='Conhecer as alternativas';
       }else if(answers.condicional==='Ainda não sei'){
-        diag.title='Uma verificação simples pode mudar seu cenário';
-        diag.summary='Você ainda não confirmou o limite do cartão. Antes de descartar essa opção, vale verificar quanto está disponível e comparar com os demais caminhos.';
+        diag.title='Seu cenário ainda pode surpreender positivamente';
+        diag.summary='A possibilidade permanece aberta. Uma verificação rápida pode mostrar se o cartão ou outra forma de compra se encaixa melhor.';
         diag.profile='Possibilidade em aberto';
-        diag.profileText='A condição principal ainda não foi confirmada, portanto o cenário pode ser melhor do que parece.';
-        diag.path='Confirmar limite e comparar';
-        diag.pathText='O vendedor pode orientar o valor necessário para '+model.name+' e mostrar alternativas.';
-        diag.hopeTitle='A resposta ainda pode ser positiva';
-        diag.hopeText='Como o limite não foi verificado, não existe um motivo concreto para concluir que a compra não é possível.';
-        diag.cta='Entender o limite necessário';
+        diag.profileText='Ainda há informações que podem melhorar a leitura do cenário.';
+        diag.path='Verificação rápida';
+        diag.pathText='Consulte as condições necessárias para avançar.';
+        diag.hopeTitle='Ainda não existe uma resposta negativa';
+        diag.hopeText='Vale confirmar as possibilidades antes de tomar uma decisão.';
+        diag.cta='Verificar possibilidades';
       }else{
-        diag.title='Uma conversa rápida pode revelar o melhor caminho';
-        diag.summary='Você prefere receber orientação antes de avaliar o cartão. O vendedor pode explicar as opções sem exigir decisão imediata.';
-        diag.profile='Cenário aberto à orientação';
-        diag.profileText='Existem alternativas que só ficam claras quando valores e condições são comparados.';
+        diag.title='Uma orientação rápida pode mostrar o melhor caminho';
+        diag.summary='Você pode conhecer as opções disponíveis sem assumir nenhum compromisso agora.';
+        diag.profile='Cenário em orientação';
+        diag.profileText='A próxima conversa pode tornar as opções mais claras.';
         diag.path='Atendimento personalizado';
-        diag.pathText='Converse sobre cartão, à vista e financiamento para '+model.name+'.';
-        diag.hopeTitle='Você não precisa descobrir tudo sozinho';
-        diag.hopeText='O vendedor pode fazer a primeira leitura e mostrar qual caminho merece ser tentado.';
-        diag.cta='Receber uma orientação personalizada';
+        diag.pathText='Compare cartão, à vista e financiamento.';
+        diag.hopeTitle='Você não precisa decidir sozinho';
+        diag.hopeText='O atendente pode explicar as opções e ajudar você a escolher o próximo passo.';
+        diag.cta='Receber orientação';
       }
     }else if(answers.forma_pagamento==='pix'){
       diag.key='pix';
-      diag.title=isSoon()?'Sua forma de pagamento coloca a compra em um cenário muito positivo':'Você escolheu o caminho de menor valor comercial';
-      diag.summary='A opção no PIX ou dinheiro permite acessar o valor especial de '+model.cash+' para '+model.name+', sujeito à confirmação comercial.';
-      diag.profile=isSoon()?'Cenário muito favorável':'Planejamento bem direcionado';
-      diag.profileText=isSoon()?'Forma de pagamento definida e intenção próxima criam um caminho objetivo.':'Você já conhece a forma mais econômica e pode organizar o melhor momento.';
+      diag.title=isSoon()?'Seu cenário está bem encaminhado para uma confirmação':'Você já encontrou a condição de menor valor';
+      diag.summary='A condição especial no PIX ou dinheiro está disponível para consulta. Confirme o modelo e a disponibilidade com o atendente.';
+      diag.profile=isSoon()?'Cenário favorável':'Planejamento bem direcionado';
+      diag.profileText=isSoon()?'Há um caminho claro para avançar.':'Você pode organizar a compra com uma referência objetiva.';
       diag.path='Valor especial à vista';
       diag.pathText=model.cash+' para o modelo selecionado.';
-      diag.hopeTitle='A melhor condição já está identificada';
-      diag.hopeText='Seu próximo passo é confirmar disponibilidade e valor. Você já eliminou a principal dúvida sobre a forma de pagamento.';
+      diag.hopeTitle='A condição mais econômica já está identificada';
+      diag.hopeText='Agora falta apenas confirmar a disponibilidade e os próximos passos.';
       diag.cta='Confirmar condição à vista';
     }else if(answers.forma_pagamento==='financiamento'){
       diag.key='financiamento';
-      diag.path='Análise bancária sobre '+model.financeBase;
+      diag.path='Análise bancária';
       diag.pathText='Juros, entrada, parcelas e aprovação dependem do banco.';
-      diag.cta='Tentar uma análise com o vendedor';
+      diag.cta='Tentar uma análise';
       if(answers.entrada==='Mais de R$ 3.000'){
-        diag.title='Seu cenário reúne um sinal importante para tentar a aprovação';
-        diag.summary='Você informou uma entrada mais robusta. Isso reduz o valor a financiar e pode contribuir positivamente para a composição da proposta.';
-        diag.profile='Cenário promissor para análise';
-        diag.profileText='A entrada informada fortalece seu ponto de partida, embora a decisão final seja do banco.';
-        diag.hopeTitle='Vale muito a pena colocar seu cenário em análise';
-        diag.hopeText='Você já possui um elemento financeiro relevante. Não é garantia, mas é um motivo concreto para tentar a aprovação.';
+        diag.title='Seu cenário tem bom potencial para uma análise';
+        diag.summary='Há uma base positiva para tentar uma proposta bancária. A condição final dependerá da análise realizada pelo banco.';
+        diag.profile='Cenário promissor';
+        diag.profileText='Vale avançar para uma simulação real.';
+        diag.hopeTitle='Existe uma possibilidade concreta para verificar';
+        diag.hopeText='O próximo passo pode trazer uma resposta objetiva sobre entrada e parcelas.';
       }else if(answers.entrada==='De R$ 1.001 a R$ 3.000'){
-        diag.title='Seu cenário apresenta sinais positivos para uma tentativa';
-        diag.summary='A entrada intermediária pode ajudar a reduzir o valor financiado e oferecer ao banco uma proposta mais estruturada.';
+        diag.title='Seu cenário apresenta uma possibilidade real de análise';
+        diag.summary='A simulação indica que vale colocar o cenário em avaliação e conhecer as condições que o banco pode oferecer.';
         diag.profile='Boa possibilidade de análise';
-        diag.profileText='Você já tem um valor disponível que pode contribuir na composição do financiamento.';
-        diag.hopeTitle='Existe uma base real para iniciar a simulação';
-        diag.hopeText='A entrada não garante aprovação, mas melhora o ponto de partida e justifica conversar com o vendedor.';
+        diag.profileText='Há motivos para continuar a tentativa.';
+        diag.hopeTitle='Seu cenário merece uma análise real';
+        diag.hopeText='Uma simulação bancária pode mostrar uma condição possível para você.';
       }else if(answers.entrada==='Até R$ 1.000'){
-        diag.title='Mesmo com uma entrada inicial, existe um caminho para verificar';
-        diag.summary='Uma entrada menor exige mais atenção aos juros, prazo e análise do banco, mas não elimina automaticamente a possibilidade.';
-        diag.profile='Possibilidade com análise personalizada';
-        diag.profileText='Seu cenário precisa ser ajustado, porém ainda existem fatores que podem ser avaliados pelo banco.';
-        diag.hopeTitle='Uma entrada inicial já é diferente de começar sem nenhuma opção';
-        diag.hopeText='Vale tentar uma simulação real para descobrir se prazo e condições podem tornar o cenário viável.';
+        diag.title='Seu cenário ainda pode encontrar uma condição viável';
+        diag.summary='A possibilidade permanece aberta. Vale avaliar prazo, parcelas e condições antes de concluir que a compra não cabe no seu momento.';
+        diag.profile='Possibilidade personalizada';
+        diag.profileText='O cenário precisa de uma avaliação mais individual.';
+        diag.hopeTitle='Ainda existe um caminho para tentar';
+        diag.hopeText='Uma simulação real pode revelar uma alternativa compatível com o seu orçamento.';
       }else if(answers.entrada==='Ainda não'){
-        diag.title='Sem entrada hoje não significa uma resposta negativa automática';
-        diag.summary='A ausência de entrada torna a análise mais criteriosa, mas o banco avalia um conjunto de fatores. Só uma simulação real pode mostrar o resultado.';
-        diag.profile='Cenário que merece verificação';
-        diag.profileText='É necessário avaliar renda, prazo e política do banco antes de concluir qualquer coisa.';
-        diag.hopeTitle='Ainda existe uma pergunta em aberto: o que o banco pode oferecer?';
-        diag.hopeText='Não é possível prometer aprovação, mas também não existe base para descartar seu cenário sem tentar a análise.';
+        diag.title='Ainda vale verificar as condições disponíveis';
+        diag.summary='A resposta não pode ser definida apenas por esta etapa. O banco considera outras informações antes de apresentar uma decisão.';
+        diag.profile='Cenário em avaliação';
+        diag.profileText='Somente a análise real poderá confirmar as possibilidades.';
+        diag.hopeTitle='Seu cenário ainda não está encerrado';
+        diag.hopeText='Vale conversar com o atendente e entender o que pode ser analisado.';
       }else{
-        diag.title='Seu cenário pode ser avaliado de forma reservada e personalizada';
-        diag.summary='Você preferiu não informar a entrada na página. O vendedor pode conversar de forma individual e iniciar a análise apenas se você desejar.';
-        diag.profile='Possibilidade reservada';
-        diag.profileText='Sem o valor de entrada, o resultado permanece aberto e depende de uma conversa direta.';
-        diag.hopeTitle='Você ainda pode conhecer as possibilidades sem se comprometer';
-        diag.hopeText='Uma conversa privada permite entender o cenário antes de decidir se deseja enviar dados ao banco.';
+        diag.title='Seu cenário pode ser analisado de forma reservada';
+        diag.summary='Você pode entender as possibilidades diretamente com o atendente e decidir se deseja continuar a análise.';
+        diag.profile='Análise personalizada';
+        diag.profileText='A conversa individual mantém suas opções em aberto.';
+        diag.hopeTitle='Você pode conhecer as condições sem compromisso';
+        diag.hopeText='O primeiro contato serve apenas para entender o que pode funcionar no seu caso.';
       }
     }else if(answers.forma_pagamento==='comparar'){
       diag.key='comparar';
-      diag.title='Ter mais de um caminho aumenta suas possibilidades';
-      diag.summary='Você não ficou preso a uma única forma de compra. Cartão, valor à vista e financiamento podem ser comparados para encontrar a opção mais coerente.';
+      diag.title='Mais de uma opção pode funcionar no seu cenário';
+      diag.summary='Compare cartão, valor à vista e financiamento antes de escolher. Uma alternativa pode se encaixar melhor do que você imagina.';
       diag.profile='Cenário flexível';
-      diag.profileText='Flexibilidade financeira evita descartar a compra por olhar apenas uma condição.';
-      diag.path='Comparação das três opções';
-      diag.pathText='O vendedor pode mostrar as diferenças para '+model.name+'.';
-      diag.hopeTitle='Existe mais de uma porta para tentar';
-      diag.hopeText='Quando uma alternativa não encaixa, outra pode fazer mais sentido. Comparar é a forma mais segura de descobrir.';
-      diag.cta='Comparar todas as possibilidades';
+      diag.profileText='Você mantém mais de um caminho disponível.';
+      diag.path='Comparação das opções';
+      diag.pathText='Conheça as diferenças e escolha com mais segurança.';
+      diag.hopeTitle='Existe mais de uma possibilidade para verificar';
+      diag.hopeText='Comparar as condições pode revelar uma opção mais adequada ao seu momento.';
+      diag.cta='Comparar possibilidades';
     }
 
     if(answers.momento_compra==='Ainda estou pesquisando'){
       diag.profile='Pesquisa com possibilidade aberta';
-      diag.profileText='Você ainda não precisa fechar, mas pode confirmar agora se existe um cenário viável para o futuro.';
+      diag.profileText='Você pode conhecer as condições agora e decidir no seu tempo.';
     }
 
-    diag.points=[
-      'Modelo considerado: '+model.name+'.',
-      monthlyData().text,
-      isSoon()?'Seu momento de compra reforça a importância de confirmar condições agora.':'Você pode conversar sem compromisso e usar a informação para se planejar.'
-    ];
-    diag.insights=answerInsights();
     return diag;
   }
 
@@ -1633,34 +1729,23 @@
     var actionText=document.getElementById('diag-action-text');
     var stickyTitle=document.getElementById('diag-sticky-title');
     if(answers.forma_pagamento==='financiamento'){
-      actionTitle.textContent='Seu cenário mostra que vale tentar uma análise';
-      actionText.textContent='O atendente pode verificar entrada, parcelas e condições possíveis para o seu caso.';
-      stickyTitle.textContent='Vale tentar uma análise de financiamento';
+      actionTitle.textContent='Vale conferir as possibilidades disponíveis';
+      actionText.textContent='O atendente pode apresentar as condições atuais e orientar o próximo passo.';
+      stickyTitle.textContent='Confira as opções de financiamento';
     }else if(answers.forma_pagamento==='cartao'){
-      actionTitle.textContent='Confira se o cartão pode viabilizar sua compra';
+      actionTitle.textContent='Confira as condições disponíveis no cartão';
       actionText.textContent='Converse agora para entender limite, divisão e próximos passos.';
-      stickyTitle.textContent='Confira sua possibilidade no cartão';
+      stickyTitle.textContent='Confira a opção no cartão';
     }else if(answers.forma_pagamento==='pix'){
       actionTitle.textContent='Confirme a condição especial à vista';
       actionText.textContent='O atendente pode confirmar valor, modelo e disponibilidade.';
       stickyTitle.textContent='Confirme a condição à vista';
     }else{
-      actionTitle.textContent='Compare os caminhos antes de decidir';
-      actionText.textContent='O atendente pode mostrar qual opção se aproxima mais do seu cenário.';
+      actionTitle.textContent='Conheça as opções antes de decidir';
+      actionText.textContent='O atendente pode apresentar as alternativas disponíveis para você.';
       stickyTitle.textContent='Compare suas possibilidades';
     }
 
-    var insights=document.getElementById('diag-answer-insights');
-    insights.innerHTML='';
-    diag.insights.forEach(function(item){
-      var card=document.createElement('div');card.className='answer-insight';
-      var idx=document.createElement('span');idx.className='answer-insight-index';idx.textContent=String(item.index).padStart(2,'0');
-      var body=document.createElement('div');var strong=document.createElement('strong');strong.textContent=item.title;var p=document.createElement('p');p.textContent=item.text;
-      body.appendChild(strong);body.appendChild(p);card.appendChild(idx);card.appendChild(body);insights.appendChild(card);
-    });
-
-    var points=document.getElementById('diag-points');points.innerHTML='';
-    diag.points.forEach(function(point){var li=document.createElement('li');li.textContent=point;points.appendChild(li);});
 
     ['diag-wa-cta','diag-wa-sticky'].forEach(function(linkId){
       var resultLink=document.getElementById(linkId);
